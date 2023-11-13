@@ -87,7 +87,7 @@ réalisation d’une capsule vidéo présentant votre projet.
 
 Je propose de créer plusieurs classes en C++ pour répondre à cette problématique :
 ```c++
-class Rame {
+class Rame { // La classe Rame permet de créer des objets Rame avec différentes caractéritiques. Elles sont gérés par les fonctions de la classe Superviseur et de la classe Rame
   private :
     
   public : 
@@ -100,9 +100,8 @@ class Rame {
     bool isStopped; // Si vrai, des passagers peuvent monter dans la rame.
     int passagers; // le nombre de passagers dans la rame
     int passagersCapacity; // le nombre maximum de passagers dans la rame
-    Rame* nextRame; // quel est la prochaine rame ? on met un pointeur car la prochaine rame ne fait pas partie de la classe Rame, mais on peut obtenier la prochaine rame via une rame,
-    // comme une liste chainée.
-    Station* nextStation; // quel est la prochaine rame ?
+    Rame* nextRame; // quel est la prochaine rame ? on met un pointeur car la prochaine rame ne fait pas partie de la classe Rame, mais on peut obtenier la prochaine rame via une rame, comme une liste chainée.
+    Station* nextStation; // quel est la prochaine station ?
     float distanceNextRame; // la distance jusqu'a la prochaine rame, si elle est en dessous de la distance minimale autorisé on ralenti la rame
     float distanceNextStation; // la distance jusqu'a la prochaine station
     float distanceTraveled; // la distance parcourue sur la voie actuelle
@@ -111,15 +110,39 @@ class Rame {
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
     }
 
-class Station {
+class Station { // La classe Station permet de créer des objets Station avec différentes caractéritiques.
+//Elles sont gérés par les fonctions de la classe Superviseur et de la classe Station
   private :
   
   public :
     int number; // le numéro de la station
+    string name; // Nom de la station
     int passagers; // le nombre de passagers dans la station
     int passagersCapacity; // le nombre maximum de passagers dans la station
     Rame* NextRame; // Quel est la rame qui arrive ?
     float distanceNextRame;// la distance avec la rame qui arrive. Si elle est de 0, c'est que la rame se trouve à la station !
-    ```
+```
       
-      
+
+
+### Toutes les stations :
+#### 1 Quatre Cantons - Stade Pierre-Mauroy
+#### 2 Cité scientifique - Professeur Gabillard
+#### 3 Triolo
+#### 4 Villeneuve-d'Ascq - Hôtel de Ville	
+#### 5 Pont de Bois
+#### 6 Square Flandres
+#### 7 Mairie d'Hellemmes
+#### 8 Marbrerie
+#### 9 Fives
+#### 10 Caulier
+#### 11 Gare Lille-Flandres
+#### 12 Rihour
+#### 13 République - Beaux-Arts
+#### 14 Gambetta
+#### 15 Wazemmes
+#### 16 Porte des Postes
+#### 17 CHU - Centre Oscar-Lambret
+#### 18 CHU - Eurasanté
+
+
