@@ -86,6 +86,7 @@ réalisation d’une capsule vidéo présentant votre projet.
 
 
 Je propose de créer plusieurs classes en C++ pour répondre à cette problématique :
+```
 class Rame {
   private :
     
@@ -118,6 +119,7 @@ class Station {
     int passagers; // le nombre de passagers dans la station
     int passagersCapacity; // le nombre maximum de passagers dans la station
     Rame* NextRame; // Quel est la rame qui arrive ?
+```
     float distanceNextRame;// la distance avec la rame qui arrive. Si elle est de 0, c'est que la rame se trouve à la station !
     
       
