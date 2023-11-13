@@ -1,5 +1,5 @@
 # ProjetPOO
-Un projet : Modélisation simplifiée d’un système de transport de type « VAL »x
+Un projet : Modélisation simplifiée d’un système de transport de type « VAL ».
 
 ## Introduction
 Le véhicule automatique léger (VAL) – anciennement acronyme du projet
@@ -24,7 +24,7 @@ séparées (logique !). A chaque terminus, la rame fait demi-tour en suivant un 
 particulier consistant à aller dans une voie de réserve dans un sens et à repartir dans
 l’autre sens pour se positionner au départ de la ligne sur le quai opposé.
 
-![projet](https://github.com/AntoineHERBAUX/ProjetPOO/assets/112757413/0936f01b-dfeb-4a02-927c-65b9ae08a80f)
+![projet](https://github.com/AntoineHERBAUX/ProjetPOO/assets/112757413/93444503-da71-4876-b774-65a1aba4034e)
 
 Le déplacement de chaque rame est régi par une phase d’accélération, une phase
 éventuelle de parcours à une vitesse de fonctionnement constante (vitesse de croisière)
