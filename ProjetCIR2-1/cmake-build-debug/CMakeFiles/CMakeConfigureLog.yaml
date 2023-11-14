@@ -411,3 +411,110 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "raylib/raylib/cmake/AddIfFlagCompiles.cmake:3 (CHECK_C_COMPILER_FLAG)"
+      - "raylib/raylib/cmake/CompilerFlags.cmake:5 (add_if_flag_compiles)"
+      - "raylib/raylib/CMakeLists.txt:29 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
+    directories:
+      source: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wipiul"
+      binary: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wipiul"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_THOSE_TOGGLES"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wipiul
+        
+        Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe -v cmTC_e9f3d && [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe -DCOMPILER_HAS_THOSE_TOGGLES  -Werror=pointer-arith -o CMakeFiles/cmTC_e9f3d.dir/src.c.obj -c C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wipiul/src.c
+        [2/2] cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe   CMakeFiles/cmTC_e9f3d.dir/src.c.obj -o cmTC_e9f3d.exe -Wl,--out-implib,libcmTC_e9f3d.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "raylib/raylib/src/external/glfw/CMakeLists.txt:64 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ljdmy"
+      binary: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ljdmy"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_MODULE_PATH: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/cmake;C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ljdmy
+        
+        Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe -v cmTC_e418c && [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith -o CMakeFiles/cmTC_e418c.dir/src.c.obj -c C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-6ljdmy/src.c
+        [2/2] cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_e418c.dir/src.c.obj -o cmTC_e418c.exe -Wl,--out-implib,libcmTC_e418c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CheckIncludeFile.cmake:95 (try_compile)"
+      - "raylib/raylib/src/external/glfw/src/CMakeLists.txt:291 (check_include_file)"
+    checks:
+      - "Looking for dinput.h"
+    directories:
+      source: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-db01pi"
+      binary: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-db01pi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/cmake;C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "DINPUT_H_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-db01pi
+        
+        Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe -v cmTC_77fb5 && [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles/cmTC_77fb5.dir/CheckIncludeFile.c.obj -c C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-db01pi/CheckIncludeFile.c
+        [2/2] cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_77fb5.dir/CheckIncludeFile.c.obj -o cmTC_77fb5.exe -Wl,--out-implib,libcmTC_77fb5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CheckIncludeFile.cmake:95 (try_compile)"
+      - "raylib/raylib/src/external/glfw/src/CMakeLists.txt:292 (check_include_file)"
+    checks:
+      - "Looking for xinput.h"
+    directories:
+      source: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4difeg"
+      binary: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4difeg"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/cmake;C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/raylib/raylib/src/external/glfw/CMake/modules"
+    buildResult:
+      variable: "XINPUT_H_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4difeg
+        
+        Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe -v cmTC_8aab7 && [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles/cmTC_8aab7.dir/CheckIncludeFile.c.obj -c C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-4difeg/CheckIncludeFile.c
+        [2/2] cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  CMakeFiles/cmTC_8aab7.dir/CheckIncludeFile.c.obj -o cmTC_8aab7.exe -Wl,--out-implib,libcmTC_8aab7.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

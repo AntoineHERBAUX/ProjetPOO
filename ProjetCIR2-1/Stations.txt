@@ -1,0 +1,18 @@
+1: Quatre Cantons - Stade Pierre-Mauroy
+2: Cité scientifique - Professeur Gabillard
+3: Triolo
+4: Villeneuve-d'Ascq - Hôtel de Ville
+5: Pont de Bois
+6: Square Flandres
+7: Mairie d'Hellemmes
+8: Marbrerie
+9: Fives
+10: Caulier
+11: Gare Lille-Flandres
+12: Rihour
+13: République - Beaux-Arts
+14: Gambetta
+15: Wazemmes
+16: Porte des Postes
+17: CHU - Centre Oscar-Lambret
+18: CHU - Eurasanté

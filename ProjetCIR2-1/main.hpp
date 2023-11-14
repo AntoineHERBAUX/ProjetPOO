@@ -1,19 +1,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
+const int MAX_PASSAGER=200;
 class Rame;
 class Station;
 
 class Station { // La classe Station permet de créer des objets Station avec différentes caractéritiques.
 //Elles sont gérés par les fonctions de la classe Superviseur et de la classe Station
 public :
+    Station(std::string name, int id);
+
     int number; // le numéro de la station
     std::string name; // Nom de la station
-    int passagers; // le nombre de passagers dans la station
+    int passagers;
     int passagersCapacity; // le nombre maximum de passagers dans la station
     Rame *NextRame; // Quel est la rame qui arrive ?
-    float distanceNextRame; // la distance avec la rame qui arrive. Si elle est de 0, c'est que la rame se trouve à la station !
 };
 
 

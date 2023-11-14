@@ -1,0 +1,3 @@
+void global_affichage(){
+
+}

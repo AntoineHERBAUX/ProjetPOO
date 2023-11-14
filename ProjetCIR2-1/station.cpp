@@ -1,4 +1,8 @@
 #include "main.hpp"
-void test(){
-    std::cout << "test" << std::endl;
-}
+Station::Station(std::string name, int id){
+    this->number = id;
+    this->name=name;
+    int passagers;
+    int passagersCapacity=MAX_PASSAGER;
+    Rame *NextRame=NULL;
+};

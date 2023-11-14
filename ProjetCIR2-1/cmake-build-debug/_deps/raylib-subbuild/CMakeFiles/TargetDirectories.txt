@@ -1,0 +1,3 @@
+C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate.dir
+C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/edit_cache.dir
+C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/rebuild_cache.dir
