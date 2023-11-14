@@ -61,6 +61,12 @@ build CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj: CXX_COMPILER__ProjetCIR2_1_un
   OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
   OBJECT_FILE_DIR = CMakeFiles\ProjetCIR2_1.dir
 
+build CMakeFiles/ProjetCIR2_1.dir/rame.cpp.obj: CXX_COMPILER__ProjetCIR2_1_unscanned_Debug C$:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/rame.cpp || cmake_object_order_depends_target_ProjetCIR2_1
+  DEP_FILE = CMakeFiles\ProjetCIR2_1.dir\rame.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCIR2_1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ProjetCIR2_1
@@ -69,7 +75,7 @@ build CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj: CXX_COMPILER__ProjetCIR2_1_un
 #############################################
 # Link the executable ProjetCIR2_1.exe
 
-build ProjetCIR2_1.exe: CXX_EXECUTABLE_LINKER__ProjetCIR2_1_Debug CMakeFiles/ProjetCIR2_1.dir/main.cpp.obj CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj
+build ProjetCIR2_1.exe: CXX_EXECUTABLE_LINKER__ProjetCIR2_1_Debug CMakeFiles/ProjetCIR2_1.dir/main.cpp.obj CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj CMakeFiles/ProjetCIR2_1.dir/rame.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
