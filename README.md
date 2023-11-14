@@ -87,16 +87,15 @@ réalisation d’une capsule vidéo présentant votre projet.
 
 Je propose de créer plusieurs classes en C++ pour répondre à cette problématique :
 ```c++
+
 class Rame { // La classe Rame permet de créer des objets Rame avec différentes caractéritiques. Elles sont gérés par les fonctions de la classe Superviseur et de la classe Rame
-  private :
-    
-  public : 
+public :
     int number; // le numéro de la rame
     float maxVitesse; // Vitesse maximale de la rame
-    float deccelerationRate; // le taux de decceleration (par exemple -1km/h par sec, soit 1)
+    float deccelerationRate; // le taux de decceleration (par exemple -1km/h par sec, soit 1). Ne peut on pas considérer qu'elle accélère aussi vite qu'elle décélère ?
     float accelerationRate; // le taux d'acceleration (par exemple 1km/h par sec, soit 1)
     float minDistanceBetweenRame; // la distance minimale autorisé entre deux rames, si elle est dépassé, on ralenti la rame derrière
-    float vitesse; // la vitesse de la rame. 
+    float vitesse; // la vitesse de la rame.
     bool isStopped; // Si vrai, des passagers peuvent monter dans la rame.
     int passagers; // le nombre de passagers dans la rame
     int passagersCapacity; // le nombre maximum de passagers dans la rame
@@ -105,10 +104,10 @@ class Rame { // La classe Rame permet de créer des objets Rame avec différente
     float distanceNextRame; // la distance jusqu'a la prochaine rame, si elle est en dessous de la distance minimale autorisé on ralenti la rame
     float distanceNextStation; // la distance jusqu'a la prochaine station
     float distanceTraveled; // la distance parcourue sur la voie actuelle
-    float percentageTraveled; // en fonction de la voie, la position de la rame sur la voie : 0% au début de la voie, 50% au milieu, 100% au bout, 
+    
     //ainsi si on est au bout, dès que c'est possible on change de voie
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
-    }
+};
 
 class Station { // La classe Station permet de créer des objets Station avec différentes caractéritiques.
 //Elles sont gérés par les fonctions de la classe Superviseur et de la classe Station
@@ -121,6 +120,20 @@ class Station { // La classe Station permet de créer des objets Station avec di
     int passagersCapacity; // le nombre maximum de passagers dans la station
     Rame* NextRame; // Quel est la rame qui arrive ?
     float distanceNextRame;// la distance avec la rame qui arrive. Si elle est de 0, c'est que la rame se trouve à la station !
+
+classe Superviseur { // La classe Superviseur, contient des méthodes permettant d'obtenir des informations sur les rames et les stations}
+  private :
+
+  public :
+    float deccelerationRateSupervised; // le taux de decceleration lorsque un arrêt est effectué par le superviseur
+    vector<Rame> tabRame; // Table avec toutes les rames
+    vector<Station> tabStation // Tableau avec toutes les stations
+    void Stop(Rame rame, float dec=deccelerationRateSupervised);
+}
+
+float percentageTraveled; // en fonction de la voie, la position de la rame sur la voie : 0% au début de la voie, 50% au milieu, 100% au bout,
+  
+
 ```
       
 
