@@ -1,8 +1,18 @@
+#include <utility>
+
 #include "main.hpp"
-Station::Station(std::string name, int id){
+/**
+ *  @brief intialise une station
+ *  @param name nom de la station
+ *  @param id numéro de la station
+ *  @return La station initialisée
+ */
+Station::Station(std::string name, int id,std::vector<Station> ligneA){
     this->number = id;
-    this->name=name;
-    int passagers;
-    int passagersCapacity=MAX_PASSAGER;
-    Rame *NextRame=NULL;
+    this->name=std::move(name);
+    this->passagers=0;
+    this->passagersCapacity=PASSAGERSCAPACITY;
+    this->Coordinates={0,0};
+    this->presentRame=nullptr;
 };
+
