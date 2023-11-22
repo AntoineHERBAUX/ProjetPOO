@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "raylib.h"
+#include "raymath.h"
 
 const int MAX_PASSAGER=200;
 const int MAX_VITESSE=80; //vitesse max en km/h
@@ -11,9 +12,11 @@ const int MIN_DISTANCE=100; //distance minimum entre deux rames en m
 const int PASSAGERSCAPACITY=230; // le nombre maximum de passagers dans la rame
 const int ACCELERATION=10;
 const int DECELERATION=10;
-const int CIRCULATING_RAME=30; // le nombre de rames en circulation
+const int CIRCULATING_RAME=10; // le nombre de rames en circulation
 const bool TO_4CANTONS=true;
 const bool TO_CHU=false;
+const int monitor= GetCurrentMonitor();
+
 
 
 class Rame;
@@ -31,8 +34,9 @@ public :
     std::string name; // Nom de la station
     int passagers;
     int passagersCapacity; // le nombre maximum de passagers dans la station
-    Rame *presentRame{}; // QUelle rame est à quai ? nullptr si aucune
     Vector2 Coordinates{}; // Coordonnées de la station
+
+    void show_station() const; // affiche la station
 };
 
 
@@ -46,6 +50,10 @@ public :
     float distanceTraveled; // la distance parcourue sur la voie actuelle
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
     Vector2 Coordinates{}; // Coordonnées de la rame
+
+    void show_rame() const; // affiche la rame
 };
 
 void test(); // fonction de test
+void init_windows(); // initialise la fenêtre
+void global_show(const std::vector<Station> ligneA,const std::vector<Rame> rames);

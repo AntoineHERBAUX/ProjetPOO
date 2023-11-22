@@ -13,6 +13,7 @@ Station::Station(std::string name, int id,std::vector<Station> ligneA){
     this->passagers=0;
     this->passagersCapacity=PASSAGERSCAPACITY;
     this->Coordinates={0,0};
-    this->presentRame=nullptr;
-};
+}
+
+
 
