@@ -9,3 +9,4 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     this->passagers=0;
     this->distanceTraveled=0;
 };
+

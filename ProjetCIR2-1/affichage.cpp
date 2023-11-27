@@ -13,8 +13,10 @@ void Station::show_station() const {
 }
 
 void Rame::show_rame() const {
-    DrawRectangle(this->Coordinates.x,this->Coordinates.y,50,20,BLUE);
-    DrawText(std::to_string(this->number).c_str(),this->Coordinates.x+20,this->Coordinates.y+5,10,WHITE);
+    int y_coord;
+    if(this->whichVoie==0) y_coord=10;
+    else y_coord=-10;
+    DrawRectangle(this->Coordinates.x,this->Coordinates.y+y_coord,50,20,BLUE);
 }
 
 
@@ -24,11 +26,16 @@ void global_show(const std::vector<Station> ligneA, const std::vector<Rame> rame
     BeginDrawing();
     ClearBackground(BLACK);
     DrawText("Metro Simulator", 10, 10, 20, WHITE);
+
     for(int i=0; i<ligneA.size(); i++){
         ligneA[i].show_station();
     }
     for(int i=0; i<rames.size(); i++){
         rames[i].show_rame();
+    }
+    //on relie toutes les stations par un trait jaune
+    for(int i=0; i<ligneA.size()-1; i++){
+        DrawLine(ligneA[i].Coordinates.x,ligneA[i].Coordinates.y,ligneA[i+1].Coordinates.x,ligneA[i+1].Coordinates.y,YELLOW);
     }
     EndDrawing();
 }

@@ -12,7 +12,7 @@ const int MIN_DISTANCE=100; //distance minimum entre deux rames en m
 const int PASSAGERSCAPACITY=230; // le nombre maximum de passagers dans la rame
 const int ACCELERATION=10;
 const int DECELERATION=10;
-const int CIRCULATING_RAME=10; // le nombre de rames en circulation
+const int CIRCULATING_RAME=15; // le nombre de rames en circulation
 const bool TO_4CANTONS=true;
 const bool TO_CHU=false;
 const int monitor= GetCurrentMonitor();
@@ -37,6 +37,8 @@ public :
     Vector2 Coordinates{}; // Coordonnées de la station
 
     void show_station() const; // affiche la station
+    void add_passagers(int number); // ajoute des passagers à la station
+    void remove_passagers(int number); // enlève des passagers à la station
 };
 
 
@@ -52,6 +54,11 @@ public :
     Vector2 Coordinates{}; // Coordonnées de la rame
 
     void show_rame() const; // affiche la rame
+    void move_rame(std::vector<Station> ligneA); // fait avancer la rame
+    void add_passagers(int number); // ajoute des passagers à la rame
+    void remove_passagers(int number); // enlève des passagers à la rame
+    void change_voie(); // change de voie
+
 };
 
 void test(); // fonction de test
