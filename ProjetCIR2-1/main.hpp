@@ -54,9 +54,9 @@ public :
     Vector2 Coordinates{}; // Coordonnées de la rame
 
     void show_rame() const; // affiche la rame
-    void move_rame(std::vector<Station> ligneA); // fait avancer la rame
-    void add_passagers(int number); // ajoute des passagers à la rame
-    void remove_passagers(int number); // enlève des passagers à la rame
+    void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
+    void add_passagers_from(Station* station); // ajoute des passagers à la rame
+    void remove_passagers_to(Station* station); // enlève des passagers à la rame
     void change_voie(); // change de voie
 
 };

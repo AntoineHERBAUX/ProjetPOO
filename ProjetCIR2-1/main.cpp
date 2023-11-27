@@ -14,7 +14,7 @@ int main() {
     SetWindowPosition(0,0);
 
     //on ouvre le fichier txt station pour lire les stations dedans:
-    std::ifstream flux(R"(..\Stations.txt)");
+    std::ifstream flux("../Stations.txt");
     //on lit les stations dans le fichier. On sait qu'elles sont sous la forme "numéro:nom"
     std::vector<Station> ligneA;
     std::vector<Rame> rames;
