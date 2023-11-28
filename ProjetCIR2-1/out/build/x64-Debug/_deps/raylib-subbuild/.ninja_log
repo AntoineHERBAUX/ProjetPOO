@@ -1,0 +1,21 @@
+# ninja log v5
+4	149	7228831133858408	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	6a3e0f5f9ef60c5f
+4	149	7228831133858408	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	6a3e0f5f9ef60c5f
+150	66793	7228831800318278	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	fd40c46b51c6c167
+150	66793	7228831800318278	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	fd40c46b51c6c167
+66795	69587	0	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	df924b94bdf315d4
+66795	69587	0	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	df924b94bdf315d4
+69588	69732	7228831829702537	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	5eba87258c593723
+69588	69732	7228831829702537	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	5eba87258c593723
+69733	69861	7228831830992333	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	4f5b03be68b89015
+69733	69861	7228831830992333	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	4f5b03be68b89015
+69862	70205	7228831834432272	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	db40a521b2a1817f
+69862	70205	7228831834432272	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	db40a521b2a1817f
+70206	70329	7228831835682260	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	f7f39ec270eac69a
+70206	70329	7228831835682260	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	f7f39ec270eac69a
+70330	70460	7228831836942281	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	77250deed86495a2
+70330	70460	7228831836942281	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	77250deed86495a2
+70460	70642	7228831838802411	CMakeFiles/raylib-populate-complete	42b9fe39daec8aa3
+70460	70642	7228831838802411	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	42b9fe39daec8aa3
+70460	70642	7228831838802411	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	42b9fe39daec8aa3
+70460	70642	7228831838802411	C:/MAMP/htdocs/ProjetPOO/ProjetCIR2-1/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	42b9fe39daec8aa3
