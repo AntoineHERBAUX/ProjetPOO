@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstring>
+#include <cerrno>
 #include <string>
 #include <vector>
 #include <fstream>

@@ -4,7 +4,7 @@
 int main() {
 
 //initialisation de la fenetre:
-    InitWindow(800,600,"Metro Simulator");
+    InitWindow(800,400,"Metro Simulator");
     int ecran= GetCurrentMonitor();
     int sw=GetMonitorWidth(ecran);
     int sh=GetMonitorHeight(ecran);
@@ -15,6 +15,9 @@ int main() {
 
     //on ouvre le fichier txt station pour lire les stations dedans:
     std::ifstream flux ("./Stations.txt");
+    if(!flux){
+        std::ifstream flux("../Stations.txt");
+    }
     //on lit les stations dans le fichier. On sait qu'elles sont sous la forme "numéro:nom"
     std::vector<Station> ligneA;
     std::vector<Rame> rames;
@@ -30,22 +33,33 @@ int main() {
         flux.clear(); //reset de la lecture
         flux.seekg(0, std::ios::beg);
 
-
+        int mid = 1;
         while(getline(flux, ligne)){
 
             std::string delimiter = ":";
             std::string name = ligne.substr(ligne.find(delimiter)+1, ligne.length()); //lecture des stations
             Station station(name, i,ligneA);
-            if(200*i+35<sw) station.Coordinates={float(200*i+35),300}; //placement des coordonées pour qu'elles rentres sur l'écran
-            else {
-                station.Coordinates={float(200*(total_lines-i)+35),float(sh)-300}; //temporaire
+            
+            if (150 * i + 60 < (sw)) {
+                station.Coordinates = { float(150 * i + 60),float(200) };
+             //placement des coordonées pour qu'elles rentres sur l'écran
+            }
+            else if(mid==1) {
+                station.Coordinates = { float(150 * (i - 1) + 60),float(400) };
+                mid = 0;
+            }
+            else{
+                station.Coordinates = { float(150 * (total_lines - i-1) + 60),float(sh) - 200 };
+            //temporaire
             }
             ligneA.push_back(station); //ajout de la station au tableau des stations
             i++;
         }
     }
     else{
-        std::cout<<"erreur lecture fichier"<<std::endl; //erreur si le fichier n'est pas lu
+        std::cerr << "Cannot open file: " << std::strerror(errno) << std::endl;
+        return EXIT_FAILURE;
+        //erreur si le fichier n'est pas lu
     }
     //Une nouvelle ère
     //un nouvel air
