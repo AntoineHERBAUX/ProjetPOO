@@ -15,5 +15,18 @@ Station::Station(std::string name, int id,std::vector<Station> ligneA){
     this->Coordinates={0,0};
 }
 
+void Station::new_passagers(){
+    int new_passagers=0;
+    new_passagers=rand()%(passagersCapacity-passagers);
+    passagers+=new_passagers;
+}
+
+void Station::trade_passagers(Rame* rame){
+    int passagers_going_out=0;
+    int passagers_going_in=0;
+if(rame->Coordinates == Coordinates){
+
+}
+
 
 

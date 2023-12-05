@@ -14,7 +14,7 @@ int main() {
     SetWindowPosition(0,0);
 
     //on ouvre le fichier txt station pour lire les stations dedans:
-    std::ifstream flux ("./Stations.txt");
+    std::ifstream flux("./Stations.txt");
     if(!flux){
         std::ifstream flux("../Stations.txt");
     }

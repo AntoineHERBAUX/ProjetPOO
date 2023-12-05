@@ -81,6 +81,14 @@ build CMakeFiles/ProjetCIR2_1.dir/affichage.cpp.obj: CXX_COMPILER__ProjetCIR2_1_
   OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
   OBJECT_FILE_DIR = CMakeFiles\ProjetCIR2_1.dir
 
+build CMakeFiles/ProjetCIR2_1.dir/operator.cpp.obj: CXX_COMPILER__ProjetCIR2_1_unscanned_Debug C$:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/operator.cpp || cmake_object_order_depends_target_ProjetCIR2_1
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
+  DEP_FILE = CMakeFiles\ProjetCIR2_1.dir\operator.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-src/src -IC:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-src/src/external/glfw/include
+  OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCIR2_1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ProjetCIR2_1
@@ -89,9 +97,9 @@ build CMakeFiles/ProjetCIR2_1.dir/affichage.cpp.obj: CXX_COMPILER__ProjetCIR2_1_
 #############################################
 # Link the executable ProjetCIR2_1.exe
 
-build ProjetCIR2_1.exe: CXX_EXECUTABLE_LINKER__ProjetCIR2_1_Debug CMakeFiles/ProjetCIR2_1.dir/main.cpp.obj CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj CMakeFiles/ProjetCIR2_1.dir/rame.cpp.obj CMakeFiles/ProjetCIR2_1.dir/affichage.cpp.obj | _deps/raylib-build/raylib/libraylib.a _deps/raylib-build/raylib/external/glfw/src/libglfw3.a || _deps/raylib-build/raylib/external/glfw/src/libglfw3.a _deps/raylib-build/raylib/libraylib.a
+build ProjetCIR2_1.exe: CXX_EXECUTABLE_LINKER__ProjetCIR2_1_Debug CMakeFiles/ProjetCIR2_1.dir/main.cpp.obj CMakeFiles/ProjetCIR2_1.dir/station.cpp.obj CMakeFiles/ProjetCIR2_1.dir/rame.cpp.obj CMakeFiles/ProjetCIR2_1.dir/affichage.cpp.obj CMakeFiles/ProjetCIR2_1.dir/operator.cpp.obj | _deps/raylib-build/raylib/libraylib.a || _deps/raylib-build/raylib/external/glfw/src/glfw _deps/raylib-build/raylib/libraylib.a
   FLAGS = -g
-  LINK_LIBRARIES = _deps/raylib-build/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  _deps/raylib-build/raylib/external/glfw/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = _deps/raylib-build/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProjetCIR2_1.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -373,7 +381,7 @@ build _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj: C_COMPILER__
 #############################################
 # Link the static library _deps\raylib-build\raylib\libraylib.a
 
-build _deps/raylib-build/raylib/libraylib.a: C_STATIC_LIBRARY_LINKER__raylib_Debug _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj || _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
+build _deps/raylib-build/raylib/libraylib.a: C_STATIC_LIBRARY_LINKER__raylib_Debug _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.obj _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.obj || _deps/raylib-build/raylib/external/glfw/src/glfw
   LANGUAGE_COMPILE_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g
   OBJECT_DIR = _deps\raylib-build\raylib\CMakeFiles\raylib.dir
   POST_BUILD = cd .
@@ -570,7 +578,7 @@ build _deps/raylib-build/raylib/external/glfw/install/strip: phony _deps/raylib-
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target glfw
+# Object build statements for OBJECT_LIBRARY target glfw
 
 
 #############################################
@@ -747,20 +755,11 @@ build _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_contex
   OBJECT_FILE_DIR = _deps\raylib-build\raylib\external\glfw\src\CMakeFiles\glfw.dir
 
 
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target glfw
-
 
 #############################################
-# Link the static library _deps\raylib-build\raylib\external\glfw\src\libglfw3.a
+# Object library glfw
 
-build _deps/raylib-build/raylib/external/glfw/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Debug _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
-  LANGUAGE_COMPILE_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -g
-  OBJECT_DIR = _deps\raylib-build\raylib\external\glfw\src\CMakeFiles\glfw.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = _deps\raylib-build\raylib\external\glfw\src\libglfw3.a
-  TARGET_PDB = glfw3.a.dbg
+build _deps/raylib-build/raylib/external/glfw/src/glfw: phony _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
 
 
 #############################################
@@ -870,9 +869,7 @@ build _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings | $
 
 build ProjetCIR2_1: phony ProjetCIR2_1.exe
 
-build glfw: phony _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
-
-build libglfw3.a: phony _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
+build glfw: phony _deps/raylib-build/raylib/external/glfw/src/glfw
 
 build libraylib.a: phony _deps/raylib-build/raylib/libraylib.a
 
@@ -918,7 +915,7 @@ build _deps/raylib-build/raylib/external/glfw/all: phony _deps/raylib-build/rayl
 #############################################
 # Folder: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-build/raylib/external/glfw/src
 
-build _deps/raylib-build/raylib/external/glfw/src/all: phony _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
+build _deps/raylib-build/raylib/external/glfw/src/all: phony _deps/raylib-build/raylib/external/glfw/src/glfw
 
 # =============================================================================
 # Built-in targets

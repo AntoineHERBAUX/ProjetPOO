@@ -17,7 +17,7 @@
 //Build the examples.
 BUILD_EXAMPLES:BOOL=OFF
 
-// 
+//Build shared libraries
 BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
@@ -371,9 +371,7 @@ GLFW_INSTALL:BOOL=OFF
 //Value Computed by CMake
 GLFW_IS_TOP_LEVEL:STATIC=OFF
 
-//Library type override for GLFW (SHARED, STATIC, OBJECT, or empty
-// to follow BUILD_SHARED_LIBS)
-GLFW_LIBRARY_TYPE:STRING=
+GLFW_LIBRARY_TYPE:STRING=OBJECT
 
 //Value Computed by CMake
 GLFW_SOURCE_DIR:STATIC=C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug/_deps/raylib-src/src/external/glfw

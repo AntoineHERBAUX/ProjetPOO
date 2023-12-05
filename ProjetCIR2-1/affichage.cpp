@@ -1,7 +1,7 @@
 #include "main.hpp"
 
 void center_text_under_station(Station station, std::string text){
-    Vector2 center_coord=station.Coordinates;
+    Vector center_coord=station.Coordinates;
     int len_text=MeasureText(text.c_str(),10);
     DrawText(text.c_str(),center_coord.x-len_text/2,center_coord.y+20,10,WHITE);
 };

@@ -68,15 +68,6 @@ rule C_COMPILER__glfw_unscanned_Debug
 
 
 #############################################
-# Rule for linking C static library.
-
-rule C_STATIC_LIBRARY_LINKER__glfw_Debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\ranlib.exe $TARGET_FILE && $POST_BUILD"
-  description = Linking C static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE

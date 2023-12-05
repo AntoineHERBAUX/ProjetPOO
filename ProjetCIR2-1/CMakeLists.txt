@@ -16,5 +16,6 @@ add_executable(ProjetCIR2_1 main.cpp
         main.hpp
         station.cpp
         rame.cpp
-        affichage.cpp)
+        affichage.cpp
+        vector.cpp)
 target_link_libraries(ProjetCIR2_1 raylib)
