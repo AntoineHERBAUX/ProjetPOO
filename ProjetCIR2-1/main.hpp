@@ -19,6 +19,7 @@ const bool TO_4CANTONS=true;
 const bool TO_CHU=false;
 const int monitor= GetCurrentMonitor();
 const int MAX_PASSAGER_STATION=400;
+const int TIME_CONVERTER=60; //conversion de nombre de frame en seconde
 
 
 
@@ -64,11 +65,11 @@ public :
     float distanceTraveled; // la distance parcourue sur la voie actuelle
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
     Vector Coordinates{}; // Coordonnées de la rame
+    Station* nextStation; // la prochaine station sur la voie actuelle
 
     void show_rame() const; // affiche la rame
     void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
-    void add_passagers_from(Station* station); // ajoute des passagers à la rame
-    void remove_passagers_to(Station* station); // enlève des passagers à la rame
+    void trade_passagers(); // fait monter et descendre des passagers de la rame
     void change_voie(); // change de voie
 
 };
