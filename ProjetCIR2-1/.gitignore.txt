@@ -1,4 +1,4 @@
-.vs/
-.out/
-.idea/
-.cmake-build-debug/
+.ProjetCIR2-1/vs/
+.ProjetCIR2-1/out/
+.ProjetCIR2-1/idea/
+.ProjetCIR2-1/cmake-build-debug/
