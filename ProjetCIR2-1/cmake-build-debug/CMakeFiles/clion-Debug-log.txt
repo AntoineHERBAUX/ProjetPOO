@@ -10,6 +10,6 @@
 -- Compiling with the flags:
 --   PLATFORM=PLATFORM_DESKTOP
 --   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (8.7s)
+-- Configuring done (14.9s)
 -- Generating done (0.1s)
 -- Build files have been written to: C:/Users/Admin/Documents/GitHub/ProjetPOO/ProjetCIR2-1/cmake-build-debug
