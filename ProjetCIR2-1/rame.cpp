@@ -12,6 +12,20 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     this->nextStation = Station("null", 0);
 };
 
+void Rame::add_passagers_from(Station* station) {
+    while(this->passagers<PASSAGERSCAPACITY && station->passagers>0){
+        this->passagers++;
+        station->passagers--;
+    }
+}
+
+void Rame::remove_passagers_to(Station* station) {
+    while(this->passagers>0 && station->passagers<station->passagersCapacity){
+        this->passagers--;
+        station->passagers++;
+    }
+}
+
 void Rame::move_rame(const std::vector<Station>& ligneA) {
     float getDistance = sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) * (this->Coordinates.x - this->nextStation.Coordinates.x) + (this->Coordinates.y - this->nextStation.Coordinates.y) * (this->Coordinates.y - this->nextStation.Coordinates.y));
     if (getDistance != 0) {
