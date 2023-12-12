@@ -13,10 +13,14 @@ void Station::show_station() const {
 }
 
 void Rame::show_rame() const {
-    int y_coord;
-    if(this->whichVoie==0) y_coord=10;
-    else y_coord=-10;
-    DrawRectangle(this->Coordinates.x,this->Coordinates.y+y_coord,50,20,BLUE);
+    int y_coord, x_coord;
+    if (this->whichVoie == 0) {
+        y_coord = 2; x_coord = -25;
+    }
+    else {
+        y_coord = -21; x_coord = -25;
+    }
+    DrawRectangle(this->Coordinates.x + x_coord,this->Coordinates.y+y_coord,50,20,BLUE);
 }
 
 

@@ -34,26 +34,41 @@ int main() {
         flux.seekg(0, std::ios::beg);
 
         int mid = 1;
+        int k = 1;
+        int x=0;
+        int y=0;
         while(getline(flux, ligne)){
+            if (k % 2 == 0) {
+                std::string delimiter = ":";
+                std::string name = ligne.substr(ligne.find(delimiter) + 1, ligne.length()); //lecture des stations
+                Station station(name, i);
+                station.Coordinates = { float(x), float(y) };
+                ligneA.push_back(station);
+                i++;
+            }
+            if (k % 2 == 1) {
+                std::string delimiter = ":";
+                x = std::stoi(ligne.substr(0, ligne.find(delimiter) ));
+                y = std::stoi(ligne.substr(ligne.find(delimiter)+1, ligne.length()));
+            }
+            k++;
 
-            std::string delimiter = ":";
-            std::string name = ligne.substr(ligne.find(delimiter)+1, ligne.length()); //lecture des stations
-            Station station(name, i);
+
             
-            if (150 * i + 60 < (sw)) {
-                station.Coordinates = { float(150 * i + 60),float(200) };
-             //placement des coordonées pour qu'elles rentres sur l'écran
-            }
-            else if(mid==1) {
-                station.Coordinates = { float(150 * (i - 1) + 60),float(400) };
-                mid = 0;
-            }
-            else{
-                station.Coordinates = { float(150 * (total_lines - i-1) + 60),float(sh) - 200 };
-            //temporaire
-            }
-            ligneA.push_back(station); //ajout de la station au tableau des stations
-            i++;
+            //if (150 * i + 60 < (sw)) {
+            //    station.Coordinates = { float(150 * i + 60),float(200) };
+            // //placement des coordonées pour qu'elles rentres sur l'écran
+            //}
+            //else if(mid==1) {
+            //    station.Coordinates = { float(150 * (i - 1) + 60),float(400) };
+            //    mid = 0;
+            //}
+            //else{
+            //    station.Coordinates = { float(150 * (total_lines - i-1) + 60),float(sh) - 200 };
+            ////temporaire
+            //}
+            //ligneA.push_back(station); //ajout de la station au tableau des stations
+            //i++;
         }
     }
     else{
