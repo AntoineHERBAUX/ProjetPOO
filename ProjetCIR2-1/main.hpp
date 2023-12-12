@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <math.h>
 #include <sstream>
 #include "raylib.h"
 #include "raymath.h"
@@ -19,7 +20,6 @@ const bool TO_4CANTONS=true;
 const bool TO_CHU=false;
 const int monitor= GetCurrentMonitor();
 const int MAX_PASSAGER_STATION=400;
-const int TIME_CONVERTER=60; //conversion de nombre de frame en seconde
 
 
 
@@ -41,12 +41,12 @@ public:
 class Station { // La classe Station permet de créer des objets Station avec différentes caractéritiques.
 //Elles sont gérés par les fonctions de la classe Superviseur et de la classe Station
 public :
-
-    Station(std::string name, int id, std::vector<Station> ligneA);
+    Station();
+    Station(std::string name, int id);
 
     int number; // le numéro de la station
     std::string name; // Nom de la station
-    int passagers;
+    int passagers; //nombre de passagers attendant dans la station
     int passagersCapacity; // le nombre maximum de passagers dans la station
     Vector Coordinates{}; // Coordonnées de la station
 
@@ -65,11 +65,14 @@ public :
     float distanceTraveled; // la distance parcourue sur la voie actuelle
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
     Vector Coordinates{}; // Coordonnées de la rame
-    Station* nextStation; // la prochaine station sur la voie actuelle
+    Station nextStation; // la station suivante
+    int nextRameId; //quel est la prochaine rame
 
     void show_rame() const; // affiche la rame
     void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
-    void trade_passagers(); // fait monter et descendre des passagers de la rame
+    void arretRame(std::vector<Station> ligneA);//arret de la rame
+    void add_passagers_from(Station* station); // ajoute des passagers à la rame
+    void remove_passagers_to(Station* station); // enlève des passagers à la rame
     void change_voie(); // change de voie
 
 };

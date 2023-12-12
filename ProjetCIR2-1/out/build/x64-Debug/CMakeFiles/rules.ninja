@@ -71,15 +71,6 @@ rule C_COMPILER__glfw_unscanned_Debug
 
 
 #############################################
-# Rule for linking C static library.
-
-rule C_STATIC_LIBRARY_LINKER__glfw_Debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~1\MICROS~4\2022\COMMUN~1\VC\Tools\MSVC\1437~1.328\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking C static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE

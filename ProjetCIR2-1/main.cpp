@@ -38,7 +38,7 @@ int main() {
 
             std::string delimiter = ":";
             std::string name = ligne.substr(ligne.find(delimiter)+1, ligne.length()); //lecture des stations
-            Station station(name, i,ligneA);
+            Station station(name, i);
             
             if (150 * i + 60 < (sw)) {
                 station.Coordinates = { float(150 * i + 60),float(200) };
@@ -71,13 +71,21 @@ int main() {
         rame.vitesse=MAX_VITESSE;
 
         rame.Coordinates={ligneA[i%18].Coordinates.x,ligneA[i%18].Coordinates.y};
+        if (rame.whichVoie == 0) {
+            rame.nextStation = ligneA[i + 1 % 18];
+        }
+        else {rame.nextStation = ligneA[i - 1 % 18]; }
         rames.push_back(rame);
     }
 
 
 
     while(!WindowShouldClose()){
+        for (int i = 0;i < CIRCULATING_RAME;i++) {
+            rames[i].move_rame(ligneA);
+        }
         global_show(ligneA,rames);
+        
     }
     CloseWindow();
 
