@@ -16,4 +16,3 @@
 16: Porte des Postes
 17: CHU Oscar-Lambret
 18: CHU-Eurasanté
-19: TEst
