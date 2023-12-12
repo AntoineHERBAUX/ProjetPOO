@@ -39,8 +39,12 @@ void global_show(const std::vector<Station> ligneA, const std::vector<Rame> rame
     }
     //on relie toutes les stations par un trait jaune
     for(int i=0; i<ligneA.size()-1; i++){
-        DrawLine(ligneA[i].Coordinates.x+3,ligneA[i].Coordinates.y+3,ligneA[i+1].Coordinates.x+3,ligneA[i+1].Coordinates.y+3,YELLOW);
-        DrawLine(ligneA[i].Coordinates.x-3, ligneA[i].Coordinates.y-3, ligneA[i + 1].Coordinates.x-3, ligneA[i + 1].Coordinates.y-3, GREEN);
+        int x1 = ligneA[i].Coordinates.x;
+        int x2 = ligneA[i+1].Coordinates.x;
+        int y1 = ligneA[i].Coordinates.y;
+        int y2 = ligneA[i+1].Coordinates.y;
+        DrawLine(x1+(x1-600)*0.01, y1-5 + (y1 -300)*0.01, x2 + (x2 - 600) * 0.01, y2-5 + (y2 - 300) * 0.01,YELLOW);
+        DrawLine(x1 + (x1 - 600) * -0.01, y1+5 + (y1 - 300) * -0.01, x2 + (x2 - 600) * -0.01, y2+5 + (y2 - 300) * -0.01, GREEN);
     }
     EndDrawing();
 }
