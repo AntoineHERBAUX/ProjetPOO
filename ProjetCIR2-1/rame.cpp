@@ -14,6 +14,10 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
 
 
 void Rame::move_rame(const std::vector<Station>& ligneA) {
+    if (EmergencyBrake) {
+        this->vitesse -=2;
+        return;
+    }
     float getDistance = sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) * (this->Coordinates.x - this->nextStation.Coordinates.x) + (this->Coordinates.y - this->nextStation.Coordinates.y) * (this->Coordinates.y - this->nextStation.Coordinates.y));
     if (getDistance != 0) {
         this->Coordinates.x -= (this->vitesse / 36) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
@@ -47,12 +51,12 @@ void Rame::arretRame(std::vector<Station> ligneA) {
                 this->whichVoie = 1;
             };
                 if (this->whichVoie == 0) {
-                    std::cout << "i : " << i << "name : " << ligneA[i + 1].name << "x : " << ligneA[i + 1].Coordinates.x << std::endl;
+                    //std::cout << "i : " << i << "name : " << ligneA[i + 1].name << "x : " << ligneA[i + 1].Coordinates.x << std::endl;
                     this->nextStation = ligneA[i + 1];
                     
                 }
                 else {
-                    std::cout << "i : " << i << "name : " << ligneA[i - 1].name << "x : " << ligneA[i - 1].Coordinates.x << std::endl;
+                    //std::cout << "i : " << i << "name : " << ligneA[i - 1].name << "x : " << ligneA[i - 1].Coordinates.x << std::endl;
                     this->nextStation = ligneA[i - 1];
     
                 }

@@ -1,5 +1,7 @@
 #include "main.hpp"
 
+std::vector<Station> ligneA;
+std::vector<Rame> rames;
 
 int main() {
 
@@ -19,8 +21,7 @@ int main() {
         std::ifstream flux("../Stations.txt");
     }
     //on lit les stations dans le fichier. On sait qu'elles sont sous la forme "numéro:nom"
-    std::vector<Station> ligneA;
-    std::vector<Rame> rames;
+
     if(flux){
         std::string ligne;
         int i=0;
@@ -93,14 +94,18 @@ int main() {
         rames.push_back(rame);
     }
 
-
+    int function=0;
 
     while(!WindowShouldClose()){
         for (int i = 0;i < CIRCULATING_RAME;i++) {
             rames[i].move_rame(ligneA);
         }
         global_show(ligneA,rames);
-        
+        if(IsKeyPressed(KEY_ONE)) function=1;
+        if(IsKeyPressed(KEY_TWO)) function=2;
+
+            
+
     }
     CloseWindow();
 

@@ -67,6 +67,7 @@ public :
     Vector Coordinates{}; // Coordonnées de la rame
     Station nextStation; // la station suivante
     int nextRameId; //quel est la prochaine rame
+    bool EmergencyBrake; // si true, la rame est en arrêt d'urgence
 
     void show_rame() const; // affiche la rame
     void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
@@ -75,6 +76,12 @@ public :
 
 
 };
+//superviseur
+
+void emergency_break(Rame rame); // arrêt d'urgence
+void skip_station(Rame rame); // saut de station
+void choose_function(int function, Rame rame); // permet de choisir la fonction à appeler
+int choose_rame(); // permet de choisir la rame à appeler
 
 
 
