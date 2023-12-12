@@ -31,8 +31,11 @@ void Station::new_passagers(){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> parent of 59f45fc (Test git ignore + gestion passagers)
 void Station::trade_passagers(Rame* rame){
     int passagers_going_out=0;
     int passagers_going_in=0;
@@ -40,6 +43,5 @@ if(rame->Coordinates == Coordinates){
 
 }
 >>>>>>> parent of 59f45fc (Test git ignore + gestion passagers)
-
 
 

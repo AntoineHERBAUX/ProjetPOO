@@ -66,12 +66,18 @@ public :
     bool whichVoie; // si 0, on est dans l'aller (Lille->Villeneuve d'Asq), sinon on est dans le retour (Lille<-Villeneuve d'Asq)
     Vector Coordinates{}; // Coordonnées de la rame
 <<<<<<< HEAD
+<<<<<<< HEAD
     Station nextStation; // la station suivante
     int nextRameId; //quel est la prochaine rame
 
     void show_rame() const; // affiche la rame
     void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
     void arretRame(std::vector<Station> ligneA);//arret de la rame
+=======
+
+    void show_rame() const; // affiche la rame
+    void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
+>>>>>>> parent of 59f45fc (Test git ignore + gestion passagers)
 =======
 
     void show_rame() const; // affiche la rame
