@@ -30,10 +30,7 @@ void Station::new_passagers(){
     passagers+=new_passagers;
 }
 
-//void Station::trade_passagers(Rame* rame){
-//    int passagers_going_out=0;
-//    int passagers_going_in=0;
-//if(rame->Coordinates == Coordinates){}
+
 
 
 
