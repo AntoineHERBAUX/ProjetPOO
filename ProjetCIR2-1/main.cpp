@@ -1,3 +1,4 @@
+#include <thread>
 #include "main.hpp"
 
 std::vector<Station> ligneA;
@@ -66,7 +67,7 @@ int main() {
             //}
             //else{
             //    station.Coordinates = { float(150 * (total_lines - i-1) + 60),float(sh) - 200 };
-            ////temporaire
+            //temporaire
             //}
             //ligneA.push_back(station); //ajout de la station au tableau des stations
             //i++;
@@ -94,17 +95,27 @@ int main() {
         rames.push_back(rame);
     }
 
+    std::vector<std::thread> threads;
+    for (auto& rame : rames) {
+        threads.emplace_back(&Rame::move_rame, std::ref(rame), std::ref(ligneA));
+    }
+
+    //for (auto& thread : threads) {
+      //thread.join();
+    //}
+
     int function=0;
 
     while(!WindowShouldClose()){
-        for (int i = 0;i < CIRCULATING_RAME;i++) {
-            rames[i].move_rame(ligneA);
-        }
+        //for (int i = 0;i < CIRCULATING_RAME;i++) {
+           // rames[i].move_rame(ligneA);
+        //}
+        DrawFPS(200,10);
         global_show(ligneA,rames);
         if(IsKeyPressed(KEY_ONE)) function=1;
         if(IsKeyPressed(KEY_TWO)) function=2;
 
-            
+
 
     }
     CloseWindow();

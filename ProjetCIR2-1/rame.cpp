@@ -14,33 +14,55 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
 
 
 void Rame::move_rame(const std::vector<Station>& ligneA) {
-    if (EmergencyBrake) {
-        this->vitesse -=2;
-        return;
-    }
-    float getDistance = sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) * (this->Coordinates.x - this->nextStation.Coordinates.x) + (this->Coordinates.y - this->nextStation.Coordinates.y) * (this->Coordinates.y - this->nextStation.Coordinates.y));
-    if (getDistance != 0) {
-        this->Coordinates.x -= (this->vitesse / 36) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
-        this->Coordinates.y -= (this->vitesse / 36) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
-    }
-    std::cout << "id : " << this->number << ", x : " << this->Coordinates.x << ", y : " << this->Coordinates.y << ", vitesse :" << this->vitesse << ", go x : " << this->nextStation.Coordinates.x << ", go y : " << this->nextStation.Coordinates.y << std::endl;
-    if((this->vitesse<MAX_VITESSE)&&((((this->vitesse)*((this->vitesse+1)))/2) < getDistance*18)){
-        this->vitesse++;
-    }
-    else {
-        if (getDistance < 1) {
-            this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
-            this->Coordinates.y -= (this->Coordinates.y - this->nextStation.Coordinates.y);
-        }
-        if (this->vitesse > 0) {
-            this->vitesse--;
-        }
-        else {
+    while(!WindowShouldClose()) {
+        if (this->Coordinates == this->nextStation.Coordinates) {
+            trade_passagers();
             arretRame(ligneA);
+        } else {
+            move(ligneA);
+        }
+
+        if (EmergencyBrake) {
+            this->vitesse -= 2;
+            return;
+        }
+        float getDistance = sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
+                                 (this->Coordinates.x - this->nextStation.Coordinates.x) +
+                                 (this->Coordinates.y - this->nextStation.Coordinates.y) *
+                                 (this->Coordinates.y - this->nextStation.Coordinates.y));
+        if (getDistance != 0) {
+            this->Coordinates.x -=
+                    (this->vitesse / 36) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
+            this->Coordinates.y -=
+                    (this->vitesse / 36) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
+        }
+        std::cout << "id : " << this->number << ", x : " << this->Coordinates.x << ", y : " << this->Coordinates.y
+                  << ", vitesse :" << this->vitesse << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
+                  << this->nextStation.Coordinates.y << std::endl;
+        if ((this->vitesse < MAX_VITESSE) && ((((this->vitesse) * ((this->vitesse + 1))) / 2) < getDistance * 18)) {
+            this->vitesse++;
+        } else {
+            if (getDistance < 1) {
+                this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
+                this->Coordinates.y -= (this->Coordinates.y - this->nextStation.Coordinates.y);
+            }
+            if (this->vitesse > 0) {
+                this->vitesse--;
+            } else {
+                arretRame(ligneA);
+            }
         }
     }
 }
-
+/**
+ * @brief Handles the stopping of a train at a station and updates its direction and next station.
+ *
+ * This method is designed to manage the train's (Rame) behavior when it stops at a station. It checks if the train's current coordinates match the coordinates of any station in the provided line (ligneA). If a match is found, and the station is indeed the train's next scheduled station, it then updates the train's direction and the next station it should head to. The train changes direction at the endpoints of the line.
+ *
+ * @param ligneA A vector of Station objects representing the stations along a train line.
+ *
+ * @note The function assumes that the train line is linear and that the train changes direction at the endpoints of the line.
+ */
 void Rame::arretRame(std::vector<Station> ligneA) {
     for (int i = 0; i < size(ligneA); i++) {
         if ((this->Coordinates==(ligneA[i]).Coordinates)&&(ligneA[i].number)==this->nextStation.number) {
@@ -80,3 +102,5 @@ void Rame::trade_passagers() {
     nextStation.passagers-=passagers_going_in;
     passagers+=passagers_going_in;
 }
+
+

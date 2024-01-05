@@ -1,18 +1,36 @@
+1230:680
 1: Quatre Cantons
+1280:570
 2: Cité scientifique
+1250:460
 3: Triolo
+1100:440
 4: Villeneuve-d'Ascq
+1060:350
 5: Pont de Bois
+890:340
 6: Square Flandres
+840:325
 7: Mairie d'Hellemmes
+740:260
 8: Marbrerie
+660:180
 9: Fives
+650:100
 10: Caulier
+400:150
 11: Gare Lille-Flandres
+340:180
 12: Rihour
+330:260
 13: République
+240:340
 14: Gambetta
+240:400
 15: Wazemmes
+240:500
 16: Porte des Postes
+80:600
 17: CHU Oscar-Lambret
+100:680
 18: CHU-Eurasanté
