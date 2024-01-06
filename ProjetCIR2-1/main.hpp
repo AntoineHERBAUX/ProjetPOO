@@ -8,13 +8,15 @@
 #include <sstream>
 #include "raylib.h"
 #include "raymath.h"
+#include <thread>
+#include <chrono>
 
 const int MAX_PASSAGER=200;
-const int MAX_VITESSE=80; //vitesse max en km/h
+const int MAX_VITESSE=8; //vitesse max en km/h
 const int MIN_DISTANCE=100; //distance minimum entre deux rames en m
 const int PASSAGERSCAPACITY=230; // le nombre maximum de passagers dans la rame
-const int ACCELERATION=10;
-const int DECELERATION=10;
+const int ACCELERATION=1;
+const int DECELERATION=1;
 const int CIRCULATING_RAME=15; // le nombre de rames en circulation
 const bool TO_4CANTONS=true;
 const bool TO_CHU=false;

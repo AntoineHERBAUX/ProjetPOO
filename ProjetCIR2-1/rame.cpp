@@ -52,6 +52,7 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
                 arretRame(ligneA);
             }
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
 /**

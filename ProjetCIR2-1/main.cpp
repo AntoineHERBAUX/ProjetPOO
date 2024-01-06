@@ -12,7 +12,7 @@ int main() {
     int sw=GetMonitorWidth(ecran);
     int sh=GetMonitorHeight(ecran);
     SetWindowSize(sw,sh);
-    SetTargetFPS(60);
+    SetTargetFPS(100);
     SetExitKey(KEY_LEFT_CONTROL);
     SetWindowPosition(0,0);
 
