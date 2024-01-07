@@ -101,5 +101,5 @@ void init_windows(); // initialise la fenêtre
 void global_show(const std::vector<Station> ligneA,std::vector<Rame> rames, bool menu, Rame* target_rame); // affiche tout
 
 
-
+float CalculateAngle(Vector point1, Vector point2); // calcule l'angle entre deux points
 

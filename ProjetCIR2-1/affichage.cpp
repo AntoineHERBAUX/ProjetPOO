@@ -24,7 +24,9 @@ void Rame::show_rame() {
     else {
         y_coord = -19; x_coord = -10;
     }
-    DrawTexture(texture, this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, WHITE);
+    degrees= CalculateAngle(this->Coordinates, this->nextStation.Coordinates);
+
+    DrawTextureEx(texture, {this->Coordinates.x + x_coord, this->Coordinates.y + y_coord}, degrees, 1, WHITE);
     char string[20];
     DrawText(itoa(this->number, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 10, GREEN);
     DrawText(itoa(this->passagers, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y - 15 + y_coord, 5, ORANGE);

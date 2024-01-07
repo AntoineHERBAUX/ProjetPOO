@@ -14,25 +14,18 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     this->image = LoadImage("./rame_big.png");
 };
 
+float CalculateAngle(Vector point1, Vector point2){
+    float dx = point2.x - point1.x;
+    float dy = point2.y - point1.y;
+
+    return atan2f(dy, dx) * RAD2DEG;
+}
 
 void Rame::move_rame(std::vector<Station>& ligneA) {
     while(!WindowShouldClose()) {
         int x = this->nextStation.Coordinates.x - this->Coordinates.x;
         int y = this->nextStation.Coordinates.y - this->Coordinates.y;
-        int degrees;
-        if (x > 0 && y >= 0) {
-            degrees = (atan(y / x)) * 57.29;
-        } else if (x > 0 && y < 0) {
-            degrees = (atan(y / x) + 6.28) * 57.29;
-        } else if (x == 0 && y < 0) {
-            degrees = 270;
-        } else if (x == 0 && y > 0) {
-            degrees = 90;
-        } else if (x == 0 && y == 0) {
-            degrees = this->degrees;
-        } else {
-            degrees = (atan(y / x) + 3.14) * 57.29;
-        }
+        float degrees;
 
         if (this->Coordinates == this->nextStation.Coordinates) {
             trade_passagers();
