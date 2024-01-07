@@ -85,7 +85,7 @@ int main() {
         int sens=0;
         if(i%2==0) sens=100;
         Rame rame(sens==0,i,ligneA);
-        rame.vitesse=MAX_VITESSE;
+        rame.vitesse=0;
 
         rame.Coordinates={ligneA[i%18].Coordinates.x,ligneA[i%18].Coordinates.y};
         if (rame.whichVoie == 0) {

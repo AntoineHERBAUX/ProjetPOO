@@ -19,40 +19,43 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
             trade_passagers();
             arretRame(ligneA);
         } else {
-            move(ligneA);
+            //move(ligneA);
         }
 
-        if (EmergencyBrake) {
-            this->vitesse -= 2;
-            return;
-        }
-        float getDistance = sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
+        //if (EmergencyBrake) {
+        //    this->vitesse -= 2;
+        //    return;
+        //}
+        float getDistance = 6*sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
                                  (this->Coordinates.x - this->nextStation.Coordinates.x) +
                                  (this->Coordinates.y - this->nextStation.Coordinates.y) *
                                  (this->Coordinates.y - this->nextStation.Coordinates.y));
         if (getDistance != 0) {
             this->Coordinates.x -=
-                    (this->vitesse / 36) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
+                    (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
             this->Coordinates.y -=
-                    (this->vitesse / 36) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
+                    (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
         }
-        std::cout << "id : " << this->number << ", x : " << this->Coordinates.x << ", y : " << this->Coordinates.y
-                  << ", vitesse :" << this->vitesse << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
-                  << this->nextStation.Coordinates.y << std::endl;
-        if ((this->vitesse < MAX_VITESSE) && ((((this->vitesse) * ((this->vitesse + 1))) / 2) < getDistance * 18)) {
-            this->vitesse++;
+        if (this->number == 1) {
+            std::cout << "id : " << this->number << ", x : " << this->Coordinates.x << ", y : " << this->Coordinates.y
+                << ", vitesse :" << this->vitesse*SIMULATION_RATE << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
+                << this->nextStation.Coordinates.y << " distance : " << getDistance << "FPS :" << GetFPS() << std::endl;
+        }
+        if ((this->vitesse < MAX_VITESSE) && (((((this->vitesse)) * (((this->vitesse) + 1)))/2) < 50*getDistance/SIMULATION_RATE)) {
+            this->vitesse+=0.05;
         } else {
             if (getDistance < 1) {
                 this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
                 this->Coordinates.y -= (this->Coordinates.y - this->nextStation.Coordinates.y);
+                this->vitesse = 0;
             }
             if (this->vitesse > 0) {
-                this->vitesse--;
+                this->vitesse-=0.05;
             } else {
                 arretRame(ligneA);
             }
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 }
 /**
@@ -65,6 +68,7 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
  * @note The function assumes that the train line is linear and that the train changes direction at the endpoints of the line.
  */
 void Rame::arretRame(std::vector<Station> ligneA) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     for (int i = 0; i < size(ligneA); i++) {
         if ((this->Coordinates==(ligneA[i]).Coordinates)&&(ligneA[i].number)==this->nextStation.number) {
             if (i == 0 && this->whichVoie == 1) {
