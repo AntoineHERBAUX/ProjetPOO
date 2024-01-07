@@ -11,6 +11,7 @@
 #include "raymath.h"
 #include <thread>
 #include <chrono>
+#include <algorithm>
 
 const int SIMULATION_RATE = 10;// Vitesse de simulation : 1 = vitesse normale, pour observer le fonctionnement en accéléré, mieux vaut mettre 10 ou 20
 const int MAX_PASSAGER = 200;
@@ -42,11 +43,12 @@ public:
     void operator-=(const Vector& other);
 };
 
-class Station { // La classe Station permet de créer des objets Station avec différentes caractéritiques.
+class Station{ // La classe Station permet de créer des objets Station avec différentes caractéritiques.
 //Elles sont gérés par les fonctions de la classe Superviseur et de la classe Station
 public :
     Station();
     Station(std::string name, int id);
+
 
     int number; // le numéro de la station
     std::string name; // Nom de la station
@@ -94,7 +96,7 @@ int choose_rame(); // permet de choisir la rame à appeler
 
 void test(); // fonction de test
 void init_windows(); // initialise la fenêtre
-void global_show(const std::vector<Station> ligneA,std::vector<Rame> rames);
+void global_show(const std::vector<Station> ligneA,std::vector<Rame> rames, bool menu, Rame* target_rame); // affiche tout
 
 
 

@@ -1,5 +1,6 @@
 #include "main.hpp"
 
+
 void center_text_under_station(Station station, std::string text) {
     Vector center_coord = station.Coordinates;
     int len_text = MeasureText(text.c_str(), 10);
@@ -10,6 +11,8 @@ void center_text_under_station(Station station, std::string text) {
 void Station::show_station() const {
     DrawCircle(this->Coordinates.x, this->Coordinates.y, 10, RED);
     center_text_under_station(*this, (this->name));
+    char string[20];
+    DrawText(itoa(this->passagers, string, 10), this->Coordinates.x, this->Coordinates.y-15, 20, ORANGE);
 }
 
 void Rame::show_rame() {
@@ -24,15 +27,17 @@ void Rame::show_rame() {
     //ImageDraw();
     //DrawRectangle(this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 50, 20, BLUE);
     DrawTexture(texture, this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, WHITE);
-    if (this->number == 1) {
-        std::cout << "degrees : " << this->degrees << std::endl;
-    }
+    char string[20];
+    DrawText(itoa(this->number, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 10, GREEN);
+    DrawText(itoa(this->passagers, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y - 15 + y_coord, 5, ORANGE);
 }
 
 
 
 
-void global_show(const std::vector<Station> ligneA, std::vector<Rame> rames) {
+
+
+void global_show(const std::vector<Station> ligneA, std::vector<Rame> rames, bool menu, Rame *target_rame) {
     BeginDrawing();
     ClearBackground(BLACK);
     DrawText("Metro Simulator", 10, 10, 20, WHITE);
@@ -54,8 +59,21 @@ void global_show(const std::vector<Station> ligneA, std::vector<Rame> rames) {
         }for (int i = 0; i < rames.size(); i++) {
         rames[i].show_rame();
     }
+    if(menu==true){
+        DrawText("Metro Simulator", 10, 10, 20, WHITE);
+
+        DrawText("0: Informations de la rame", 10, 50, 20, WHITE);
+        DrawText("1: Arret d'urgence", 10, 100, 20, WHITE);
+        DrawText("2: Passer une station", 10, 150, 20, WHITE);
+        DrawText("3: Vider la rame", 10, 200, 20, WHITE);
+        DrawText("4: Reprendre l'avancée", 10, 250, 20, WHITE);
+        DrawText("5: Quitter", 10, 300, 20, WHITE);
+    }
     EndDrawing();
     for (int i = 0; i < rames.size(); i++) {
         UnloadTexture(rames[i].texture);
     }
+
+
+
 }
