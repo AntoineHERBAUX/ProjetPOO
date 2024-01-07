@@ -10,6 +10,8 @@ void center_text_under_station(Station station, std::string text) {
 void Station::show_station() const {
     DrawCircle(this->Coordinates.x, this->Coordinates.y, 10, RED);
     center_text_under_station(*this, (this->name));
+    char string[20];
+    DrawText(itoa(this->passagers, string, 10), this->Coordinates.x, this->Coordinates.y-15, 20, ORANGE);
 }
 
 void Rame::show_rame() {
@@ -24,9 +26,9 @@ void Rame::show_rame() {
     //ImageDraw();
     //DrawRectangle(this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 50, 20, BLUE);
     DrawTexture(texture, this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, WHITE);
-    if (this->number == 1) {
-        std::cout << "degrees : " << this->degrees << std::endl;
-    }
+    char string[20];
+    DrawText(itoa(this->number, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 10, GREEN);
+    DrawText(itoa(this->passagers, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y - 15 + y_coord, 5, ORANGE);
 }
 
 

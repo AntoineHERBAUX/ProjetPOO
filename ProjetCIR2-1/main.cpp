@@ -13,8 +13,8 @@ int main() {
     SetWindowIcon(img);
     //UnloadImage(img);
     int ecran= GetCurrentMonitor();
-    int sw=GetMonitorWidth(ecran);
-    int sh=GetMonitorHeight(ecran);
+    int sw=1400;
+    int sh=800;
     SetWindowSize(sw,sh);
     Image lille = LoadImage("./lille.png");
     ImageResize(&lille, 1600, 900);

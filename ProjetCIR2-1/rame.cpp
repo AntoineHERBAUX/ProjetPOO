@@ -6,7 +6,7 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     if(sens==0) this->Coordinates={ligneA[0].Coordinates};
     else this->Coordinates={ligneA[ligneA.size()-1].Coordinates};
     this->vitesse=0;
-    this->passagers=0;
+    this->passagers = rand() % PASSAGERSCAPACITY;
     this->distanceTraveled=0;
     this->nextRameId = id + 1;
     this->nextStation = Station("null", 0);
@@ -15,7 +15,7 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
 };
 
 
-void Rame::move_rame(const std::vector<Station>& ligneA) {
+void Rame::move_rame(std::vector<Station> ligneA) {
     while(!WindowShouldClose()) {
         int x = this->nextStation.Coordinates.x - this->Coordinates.x;
         int y = this->nextStation.Coordinates.y - this->Coordinates.y;
@@ -72,11 +72,11 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
             this->Coordinates.y -=
                     (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
         }
-        if (this->number == 1) {
+        /*if (this->number == 1) {
             std::cout << "id : "  << this->number << ", x : " << std::setw(8) << this->Coordinates.x << ", y : " << std::setw(8) << this->Coordinates.y
                 << ", vitesse :" << std::setw(8) << this->vitesse << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
                 << this->nextStation.Coordinates.y <<"    break distance" << std::setw(8) << ((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) << "m  distance : " << std::setw(8) << getDistance << "m   degrees:" << this->degrees  << std::endl;
-        }
+        }*/
         if ((this->vitesse < MAX_VITESSE) && (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
             this->vitesse+=0.05 * SIMULATION_RATE;
         } else {
@@ -88,6 +88,9 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
             if (this->vitesse > 0) {
                 this->vitesse-=0.05 * SIMULATION_RATE;
             } else {
+                if (this->Coordinates == this->nextStation.Coordinates) {
+                    trade_passagers();
+                }
                 arretRame(ligneA);
             }
         }
@@ -131,17 +134,18 @@ void Rame::arretRame(std::vector<Station> ligneA) {
 
 
 void Rame::trade_passagers() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     int passagers_going_out = 0;
     int passagers_going_in = 0;
     if(Coordinates!=nextStation.Coordinates) return;
-    passagers_going_out=rand()%(passagers+1);
+    passagers_going_out=rand()%(this->passagers+1);
     passagers_going_out=std::min(passagers_going_out,nextStation.passagers);
-    nextStation.passagers+=passagers_going_out;
-    passagers-=passagers_going_out;
-    passagers_going_in=rand()%(nextStation.passagersCapacity-nextStation.passagers);
-    passagers_going_in=std::min(passagers_going_in,MAX_PASSAGER-passagers);
-    nextStation.passagers-=passagers_going_in;
-    passagers+=passagers_going_in;
+    this->nextStation.GetOut(passagers_going_out);
+    this->passagers-=passagers_going_out;
+    this->nextStation.GetIn(passagers_going_in);
+    passagers_going_in=std::min(passagers_going_in, PASSAGERSCAPACITY -this->passagers);
+    this->nextStation.passagers-=passagers_going_in;
+    this->passagers+=passagers_going_in;
 }
 
 
