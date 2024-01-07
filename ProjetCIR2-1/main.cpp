@@ -118,19 +118,74 @@ int main() {
       //thread.join();
     //}
 
-    int function=0;
-
+    bool menu=false;
+    int counter=0;
+    Rame* target_rame;
     while(!WindowShouldClose()){
-        //for (int i = 0;i < CIRCULATING_RAME;i++) {
-           // rames[i].move_rame(ligneA);
-        //}
+        if (counter%10000==0){
+            for(int i=0; i<ligneA.size();i++){
+                ligneA[i].new_passagers();
+            }
+        }
+        counter++;
+
+        //quand on clique sur une rame passe menu en true
+        if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            for(int i=0;i<rames.size();i++){
+                if(CheckCollisionPointRec(GetMousePosition(),{rames[i].Coordinates.x,rames[i].Coordinates.y,50,20})){
+                    menu=true;
+                    target_rame=&rames[i];
+                }
+            }
+        }
+        if(menu==true){
+
+            if(IsKeyPressed(KEY_ZERO)){
+                menu=false;
+                std::cout<<"===================="<<std::endl;
+                std::cout<<"Rame numéro "<<target_rame->number<<std::endl;
+                std::cout<<"Vitesse: "<<target_rame->vitesse<<std::endl;
+                std::cout<<"Passagers: "<<target_rame->passagers<<std::endl;
+                std::cout<<"Prochaine station: "<<target_rame->nextStation.name<<std::endl;
+                std::cout<<"Frein d'urgence: "<<target_rame->EmergencyBrake<<std::endl;
+                std::cout<<"===================="<<std::endl;
+
+            }
+            if(IsKeyPressed(KEY_ONE)){
+                target_rame->EmergencyBrake=true;
+                menu=false;
+            }
+            if(IsKeyPressed(KEY_TWO)){
+                target_rame->nextStation=ligneA[target_rame->nextStation.number+1];
+                menu=false;
+            }
+            if(IsKeyPressed(KEY_THREE)){
+                if(target_rame->vitesse==0){
+                    target_rame->passagers=0;
+                }
+                else{
+                    std::cout<<"La rame est en mouvement, impossible de vider les passagers"<<std::endl;
+                }
+                menu=false;
+            }
+            if(IsKeyPressed(KEY_FOUR)){
+                if(target_rame->EmergencyBrake==true){
+                    target_rame->EmergencyBrake=false;
+                }
+                else{
+                    std::cout<<"La rame n'est pas en arrêt d'urgence"<<std::endl;
+                }
+                menu=false;
+            }
+            if(IsKeyPressed(KEY_FIVE)){
+                menu=false;
+            }
+        }
+
+
         DrawTexture(lille_fond, -100, -100, WHITE);
         DrawFPS(200,10);
-        global_show(ligneA,rames);
-        if(IsKeyPressed(KEY_ONE)) function=1;
-        if(IsKeyPressed(KEY_TWO)) function=2;
-
-
+        global_show(ligneA,rames, menu, target_rame);
 
     }
     UnloadImage(img);

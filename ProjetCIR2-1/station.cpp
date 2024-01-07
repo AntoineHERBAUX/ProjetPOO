@@ -27,7 +27,7 @@ Station::Station(std::string name="null", int id=0) {
 
 void Station::new_passagers(){
     int new_passagers=0;
-    new_passagers=rand()%(passagersCapacity-passagers);
+    new_passagers= rand() % (passagersCapacity/20 - passagers);
     passagers+=new_passagers;
 }
 

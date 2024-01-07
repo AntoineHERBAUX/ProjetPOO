@@ -15,6 +15,7 @@
 
 const int SIMULATION_RATE = 10;// Vitesse de simulation : 1 = vitesse normale, pour observer le fonctionnement en accéléré, mieux vaut mettre 10 ou 20
 const int MAX_VITESSE=80; //vitesse max en km/h
+const int MAX_PASSAGER=100;
 const int MIN_DISTANCE=100; //distance minimum entre deux rames en m
 const int PASSAGERSCAPACITY=230; // le nombre maximum de passagers dans la rame
 const int ACCELERATION=1;
@@ -80,7 +81,7 @@ public :
     int degrees;
 
     void show_rame(); // affiche la rame
-    void move_rame(std::vector<Station> ligneA); // fait avancer la rame
+    void move_rame(std::vector<Station>& ligneA); // fait avancer la rame
     void arretRame(std::vector<Station> ligneA);//arret de la rame
     void trade_passagers(); // fait monter et descendre les passagers
 

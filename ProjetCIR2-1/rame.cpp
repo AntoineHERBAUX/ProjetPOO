@@ -15,68 +15,65 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
 };
 
 
-void Rame::move_rame(const std::vector<Station>& ligneA) {
+void Rame::move_rame(std::vector<Station>& ligneA) {
     while(!WindowShouldClose()) {
         int x = this->nextStation.Coordinates.x - this->Coordinates.x;
         int y = this->nextStation.Coordinates.y - this->Coordinates.y;
         int degrees;
         if (x > 0 && y >= 0) {
             degrees = (atan(y / x)) * 57.29;
-        }
-        else if (x > 0 && y < 0) {
+        } else if (x > 0 && y < 0) {
             degrees = (atan(y / x) + 6.28) * 57.29;
-        }
-        else if (x == 0 && y < 0) {
+        } else if (x == 0 && y < 0) {
             degrees = 270;
-        }
-        else if (x == 0 && y > 0) {
+        } else if (x == 0 && y > 0) {
             degrees = 90;
-        }
-        else if (x == 0 && y == 0) {
+        } else if (x == 0 && y == 0) {
             degrees = this->degrees;
-        }
-        else {
+        } else {
             degrees = (atan(y / x) + 3.14) * 57.29;
         }
 
         if (this->Coordinates == this->nextStation.Coordinates) {
             trade_passagers();
             arretRame(ligneA);
-        } else {
-            //move(ligneA);
         }
 
         if (this->EmergencyBrake && this->vitesse > 0) {
-            this->vitesse -=2;
+            this->vitesse -= 2;
             return;
-        }
-        float getDistance = 6*sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
-                                 (this->Coordinates.x - this->nextStation.Coordinates.x) +
-                                 (this->Coordinates.y - this->nextStation.Coordinates.y) *
-                                 (this->Coordinates.y - this->nextStation.Coordinates.y));
-        if (getDistance != 0) {
-            this->Coordinates.x -=
-                    (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
-            this->Coordinates.y -=
-                    (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
-        }
-        if (this->number == 1) {
-        }
-        if ((this->vitesse < MAX_VITESSE) && (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
-            this->vitesse+=0.5 * SIMULATION_RATE;
         } else {
-            if (getDistance < 1) {
-                this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
-                this->Coordinates.y -= (this->Coordinates.y - this->nextStation.Coordinates.y);
-                this->vitesse = 0;
+            float getDistance = 6 * sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
+                                         (this->Coordinates.x - this->nextStation.Coordinates.x) +
+                                         (this->Coordinates.y - this->nextStation.Coordinates.y) *
+                                         (this->Coordinates.y - this->nextStation.Coordinates.y));
+            if (getDistance != 0) {
+                this->Coordinates.x -=
+                        (this->vitesse / (3.6 * 50 / SIMULATION_RATE)) *
+                        ((this->Coordinates.x - this->nextStation.Coordinates.x) / getDistance);
+                this->Coordinates.y -=
+                        (this->vitesse / (3.6 * 50 / SIMULATION_RATE)) *
+                        ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
             }
-            if (this->vitesse > 0) {
-                this->vitesse-=0.05 * SIMULATION_RATE;
+            if (this->number == 1) {
+            }
+            if ((this->vitesse < MAX_VITESSE) &&
+                (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
+                this->vitesse += 0.5 * SIMULATION_RATE;
             } else {
-                arretRame(ligneA);
+                if (getDistance < 1) {
+                    this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
+                    this->Coordinates.y -= (this->Coordinates.y - this->nextStation.Coordinates.y);
+                    this->vitesse = 0;
+                }
+                if (this->vitesse > 0) {
+                    this->vitesse -= 0.05 * SIMULATION_RATE;
+                } else {
+                    arretRame(ligneA);
+                }
             }
+            std::this_thread::sleep_for(std::chrono::milliseconds(20));
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 }
 /**
