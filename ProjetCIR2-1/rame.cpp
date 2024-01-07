@@ -41,8 +41,8 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
 
         if (this->EmergencyBrake && this->vitesse > 0) {
             this->vitesse -= 2;
-            return;
-        } 
+        }
+        else {
             float getDistance = 6 * sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
                                          (this->Coordinates.x - this->nextStation.Coordinates.x) +
                                          (this->Coordinates.y - this->nextStation.Coordinates.y) *
@@ -72,9 +72,10 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
                     arretRame(ligneA);
                 }
             }
+        }
             std::this_thread::sleep_for(std::chrono::milliseconds(20));
         }
-    }
+
 }
 /**
  * @brief Handles the stopping of a train at a station and updates its direction and next station.

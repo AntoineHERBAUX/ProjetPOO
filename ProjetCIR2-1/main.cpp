@@ -153,6 +153,7 @@ int main() {
             }
             if(IsKeyPressed(KEY_ONE)){
                 target_rame->EmergencyBrake=true;
+                target_rame->vitesse=0;
                 menu=false;
             }
             if(IsKeyPressed(KEY_TWO)){
