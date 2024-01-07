@@ -20,7 +20,7 @@ Station::Station() {
 Station::Station(std::string name="null", int id=0) {
     this->number = id;
     this->name=std::move(name);
-    this->passagers= rand() % passagersCapacity;
+    this->passagers= 0;
     this->passagersCapacity= MAX_PASSAGER_STATION;
     this->Coordinates={0,0};
 }
