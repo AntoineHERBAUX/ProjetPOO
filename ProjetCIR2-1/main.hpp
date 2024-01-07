@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cstring>
 #include <cerrno>
 #include <string>
@@ -11,9 +12,9 @@
 #include <thread>
 #include <chrono>
 
-const int SIMULATION_RATE = 1;// Vitesse de simulation : 1 = vitesse normale, pour observer le fonctionnement en accéléré, mieux vaut mettre 10 ou 20
+const int SIMULATION_RATE = 10;// Vitesse de simulation : 1 = vitesse normale, pour observer le fonctionnement en accéléré, mieux vaut mettre 10 ou 20
 const int MAX_PASSAGER = 200;
-const int MAX_VITESSE=60; //vitesse max en km/h
+const int MAX_VITESSE=80; //vitesse max en km/h
 const int MIN_DISTANCE=100; //distance minimum entre deux rames en m
 const int PASSAGERSCAPACITY=230; // le nombre maximum de passagers dans la rame
 const int ACCELERATION=1;
@@ -71,8 +72,11 @@ public :
     Station nextStation; // la station suivante
     int nextRameId; //quel est la prochaine rame
     bool EmergencyBrake; // si true, la rame est en arrêt d'urgence
+    Image image; //l'image représentant la rame
+    Texture2D texture; //la texture représentant la rame(c'est mieux car on peut éditer l'image en lui faisait des rotations)
+    int degrees;
 
-    void show_rame() const; // affiche la rame
+    void show_rame(); // affiche la rame
     void move_rame(const std::vector<Station>& ligneA); // fait avancer la rame
     void arretRame(std::vector<Station> ligneA);//arret de la rame
     void trade_passagers(); // fait monter et descendre les passagers
@@ -90,7 +94,7 @@ int choose_rame(); // permet de choisir la rame à appeler
 
 void test(); // fonction de test
 void init_windows(); // initialise la fenêtre
-void global_show(const std::vector<Station> ligneA,const std::vector<Rame> rames);
+void global_show(const std::vector<Station> ligneA,std::vector<Rame> rames);
 
 
 

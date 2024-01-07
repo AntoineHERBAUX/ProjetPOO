@@ -5,13 +5,21 @@ std::vector<Station> ligneA;
 std::vector<Rame> rames;
 
 int main() {
+    SetTraceLogLevel(LOG_NONE);
 
 //initialisation de la fenetre:
     InitWindow(800,400,"Metro Simulator");
+    Image img = LoadImage("./rame_big.png");
+    SetWindowIcon(img);
+    //UnloadImage(img);
     int ecran= GetCurrentMonitor();
     int sw=GetMonitorWidth(ecran);
     int sh=GetMonitorHeight(ecran);
     SetWindowSize(sw,sh);
+    Image lille = LoadImage("./lille.png");
+    ImageResize(&lille, 1600, 900);
+    Texture2D lille_fond = LoadTextureFromImage(lille);
+    UnloadImage(lille);
     SetTargetFPS(100);
     SetExitKey(KEY_LEFT_CONTROL);
     SetWindowPosition(0,0);
@@ -82,10 +90,15 @@ int main() {
     //un nouvel air
 
     for(int i=0;i<CIRCULATING_RAME;i++){
+        
         int sens=0;
         if(i%2==0) sens=100;
         Rame rame(sens==0,i,ligneA);
-        rame.vitesse=0;
+
+        Image image = LoadImage("./rame_big.png"); // Load image in CPU memory (RAM)
+        ImageResize(&image, 32, 32);
+        rame.image = image;   
+        rame.degrees = 0;
 
         rame.Coordinates={ligneA[i%18].Coordinates.x,ligneA[i%18].Coordinates.y};
         if (rame.whichVoie == 0) {
@@ -93,6 +106,7 @@ int main() {
         }
         else {rame.nextStation = ligneA[i - 1 % 18]; }
         rames.push_back(rame);
+        //UnloadImage(image);
     }
 
     std::vector<std::thread> threads;
@@ -110,6 +124,7 @@ int main() {
         //for (int i = 0;i < CIRCULATING_RAME;i++) {
            // rames[i].move_rame(ligneA);
         //}
+        DrawTexture(lille_fond, -100, -100, WHITE);
         DrawFPS(200,10);
         global_show(ligneA,rames);
         if(IsKeyPressed(KEY_ONE)) function=1;
@@ -118,6 +133,9 @@ int main() {
 
 
     }
+    UnloadImage(img);
+    UnloadTexture(lille_fond);
+    
     CloseWindow();
 
     return 1;

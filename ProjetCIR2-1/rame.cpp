@@ -10,11 +10,47 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     this->distanceTraveled=0;
     this->nextRameId = id + 1;
     this->nextStation = Station("null", 0);
+    this->EmergencyBrake = 0;
+    this->image = LoadImage("./rame_big.png");
 };
 
 
 void Rame::move_rame(const std::vector<Station>& ligneA) {
     while(!WindowShouldClose()) {
+        int x = this->nextStation.Coordinates.x - this->Coordinates.x;
+        int y = this->nextStation.Coordinates.y - this->Coordinates.y;
+        int degrees;
+        if (x > 0 && y >= 0) {
+            degrees = (atan(y / x)) * 57.29;
+        }
+        else if (x > 0 && y < 0) {
+            degrees = (atan(y / x) + 6.28) * 57.29;
+        }
+        else if (x == 0 && y < 0) {
+            degrees = 270;
+        }
+        else if (x == 0 && y > 0) {
+            degrees = 90;
+        }
+        else if (x == 0 && y == 0) {
+            degrees = this->degrees;
+        }
+        else {
+            degrees = (atan(y / x) + 3.14) * 57.29;
+        }
+
+        if ((((this->degrees) - degrees) > 1) || (((this->degrees) - degrees) < -1)) {
+
+            //UnloadImage(this->image);
+            //Image image = LoadImage("./big_rame.png");
+            //ImageRotate(&image, degrees);
+            //(this->degrees) = degrees;
+            //ImageResize(&image, 32, 32);
+            //this->image = image;
+        }
+
+
+
         if (this->Coordinates == this->nextStation.Coordinates) {
             trade_passagers();
             arretRame(ligneA);
@@ -22,10 +58,10 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
             //move(ligneA);
         }
 
-        //if (EmergencyBrake) {
-        //    this->vitesse -= 2;
-        //    return;
-        //}
+        if (EmergencyBrake) {
+            this->vitesse -= 2;
+            return;
+        }
         float getDistance = 6*sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
                                  (this->Coordinates.x - this->nextStation.Coordinates.x) +
                                  (this->Coordinates.y - this->nextStation.Coordinates.y) *
@@ -37,12 +73,12 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
                     (this->vitesse/(3.6*50/SIMULATION_RATE)) * ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
         }
         if (this->number == 1) {
-            std::cout << "id : " << this->number << ", x : " << this->Coordinates.x << ", y : " << this->Coordinates.y
-                << ", vitesse :" << this->vitesse*SIMULATION_RATE << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
-                << this->nextStation.Coordinates.y << " distance : " << getDistance << "FPS :" << GetFPS() << std::endl;
+            std::cout << "id : "  << this->number << ", x : " << std::setw(8) << this->Coordinates.x << ", y : " << std::setw(8) << this->Coordinates.y
+                << ", vitesse :" << std::setw(8) << this->vitesse << ", go x : " << this->nextStation.Coordinates.x << ", go y : "
+                << this->nextStation.Coordinates.y <<"    break distance" << std::setw(8) << ((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) << "m  distance : " << std::setw(8) << getDistance << "m   degrees:" << this->degrees  << std::endl;
         }
-        if ((this->vitesse < MAX_VITESSE) && (((((this->vitesse)) * (((this->vitesse) + 1)))/2) < 50*getDistance/SIMULATION_RATE)) {
-            this->vitesse+=0.05;
+        if ((this->vitesse < MAX_VITESSE) && (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
+            this->vitesse+=0.05 * SIMULATION_RATE;
         } else {
             if (getDistance < 1) {
                 this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
@@ -50,7 +86,7 @@ void Rame::move_rame(const std::vector<Station>& ligneA) {
                 this->vitesse = 0;
             }
             if (this->vitesse > 0) {
-                this->vitesse-=0.05;
+                this->vitesse-=0.05 * SIMULATION_RATE;
             } else {
                 arretRame(ligneA);
             }
