@@ -24,8 +24,6 @@ void Rame::show_rame() {
     else {
         y_coord = -19; x_coord = -10;
     }
-    //ImageDraw();
-    //DrawRectangle(this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 50, 20, BLUE);
     DrawTexture(texture, this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, WHITE);
     char string[20];
     DrawText(itoa(this->number, string, 10), this->Coordinates.x + x_coord, this->Coordinates.y + y_coord, 10, GREEN);

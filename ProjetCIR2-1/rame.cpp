@@ -10,7 +10,7 @@ Rame::Rame(bool sens, int id,std::vector<Station> ligneA){
     this->distanceTraveled=0;
     this->nextRameId = id + 1;
     this->nextStation = Station("null", 0);
-    this->EmergencyBrake = 0;
+    this->EmergencyBrake = false;
     this->image = LoadImage("./rame_big.png");
 };
 
@@ -55,8 +55,18 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
                         (this->vitesse / (3.6 * 50 / SIMULATION_RATE)) *
                         ((this->Coordinates.y - this->nextStation.Coordinates.y) / getDistance);
             }
-            if (this->number == 1) {
+
+            float distance_with_next_rame = 0;
+            if (this->nextRameId < size(ligneA)) {
+                distance_with_next_rame = sqrt((this->Coordinates.x - ligneA[this->nextRameId].Coordinates.x) *
+                                               (this->Coordinates.x - ligneA[this->nextRameId].Coordinates.x) +
+                                               (this->Coordinates.y - ligneA[this->nextRameId].Coordinates.y) *
+                                               (this->Coordinates.y - ligneA[this->nextRameId].Coordinates.y));
             }
+
+            int distance_darret=0;
+            if(this->vitesse>0) distance_darret=(this->vitesse)*(this->vitesse)/(0.5*SIMULATION_RATE);
+
             if ((this->vitesse < MAX_VITESSE) &&
                 (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
                 this->vitesse += 0.5 * SIMULATION_RATE;
@@ -69,6 +79,15 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
                 if (this->vitesse > 0) {
                     this->vitesse -= 0.05 * SIMULATION_RATE;
                 } else {
+                    trade_passagers();
+                    if(nextStation.number==0 && whichVoie==TO_4CANTONS|| nextStation.number==ligneA.size()-1 && whichVoie==TO_CHU){
+                        nextStation.passagers+=passagers;
+                        passagers=0;
+                    }
+                    if(nextStation.number==0 && whichVoie==TO_CHU|| nextStation.number==ligneA.size()-1 && whichVoie==TO_4CANTONS){
+                        passagers+=nextStation.passagers;
+                        nextStation.passagers=0;
+                    }
                     arretRame(ligneA);
                 }
             }
@@ -114,13 +133,11 @@ void Rame::arretRame(std::vector<Station> ligneA) {
 void Rame::trade_passagers() {
     int passagers_going_out = 0;
     int passagers_going_in = 0;
-    if(Coordinates!=nextStation.Coordinates) return;
     passagers_going_out=rand()%(passagers+1);
-    passagers_going_out=std::min(passagers_going_out,nextStation.passagers);
+    passagers_going_out=std::min(passagers_going_out,MAX_PASSAGER_STATION-nextStation.passagers);
     nextStation.passagers+=passagers_going_out;
     passagers-=passagers_going_out;
-    passagers_going_in=rand()%(nextStation.passagersCapacity-nextStation.passagers);
-    passagers_going_in=std::min(passagers_going_in,MAX_PASSAGER-passagers);
+    passagers_going_in=std::min(MAX_PASSAGER, int(nextStation.passagers/2));
     nextStation.passagers-=passagers_going_in;
     passagers+=passagers_going_in;
 }

@@ -122,12 +122,13 @@ int main() {
     int counter=0;
     Rame* target_rame;
     while(!WindowShouldClose()){
-        if (counter%10000==0){
+        if (counter%1000==0){
             for(int i=0; i<ligneA.size();i++){
                 ligneA[i].new_passagers();
             }
         }
         counter++;
+        counter%=1000;
 
         //quand on clique sur une rame passe menu en true
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
@@ -153,7 +154,7 @@ int main() {
             }
             if(IsKeyPressed(KEY_ONE)){
                 target_rame->EmergencyBrake=true;
-                target_rame->vitesse=0;
+
                 menu=false;
             }
             if(IsKeyPressed(KEY_TWO)){
