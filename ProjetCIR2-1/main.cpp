@@ -133,7 +133,7 @@ int main() {
         //quand on clique sur une rame passe menu en true
         if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
             for(int i=0;i<rames.size();i++){
-                if(CheckCollisionPointRec(GetMousePosition(),{rames[i].Coordinates.x,rames[i].Coordinates.y,50,20})){
+                if(CheckCollisionPointRec(GetMousePosition(),{rames[i].Coordinates.x,rames[i].Coordinates.y,100,40})){
                     menu=true;
                     target_rame=&rames[i];
                 }
