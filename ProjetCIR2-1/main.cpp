@@ -7,36 +7,36 @@ std::vector<Rame> rames;
 int main() {
     SetTraceLogLevel(LOG_NONE);
 
-//initialisation de la fenetre:
-    InitWindow(800,400,"Metro Simulator");
+    //initialisation de la fenetre:
+    InitWindow(800, 400, "Metro Simulator");
     Image img = LoadImage("./rame_big.png");
     SetWindowIcon(img);
     //UnloadImage(img);
-    int ecran= GetCurrentMonitor();
-    int sw=1400;
-    int sh=800;
-    SetWindowSize(sw,sh);
+    int ecran = GetCurrentMonitor();
+    int sw = 1400;
+    int sh = 800;
+    SetWindowSize(sw, sh);
     Image lille = LoadImage("./lille.png");
     ImageResize(&lille, 1600, 900);
     Texture2D lille_fond = LoadTextureFromImage(lille);
     UnloadImage(lille);
     SetTargetFPS(100);
     SetExitKey(KEY_LEFT_CONTROL);
-    SetWindowPosition(0,0);
+    SetWindowPosition(0, 0);
 
     //on ouvre le fichier txt station pour lire les stations dedans:
     std::ifstream flux("./Stations.txt");
-    if(!flux){
+    if (!flux) {
         std::ifstream flux("../Stations.txt");
     }
     //on lit les stations dans le fichier. On sait qu'elles sont sous la forme "numéro:nom"
 
-    if(flux){
+    if (flux) {
         std::string ligne;
-        int i=0;
-        int total_lines=0;
+        int i = 0;
+        int total_lines = 0;
 
-        while(getline(flux, ligne)){
+        while (getline(flux, ligne)) {
             total_lines++; //comptage du nombre de ligne
         }
 
@@ -45,9 +45,9 @@ int main() {
 
         int mid = 1;
         int k = 1;
-        int x=0;
-        int y=0;
-        while(getline(flux, ligne)){
+        int x = 0;
+        int y = 0;
+        while (getline(flux, ligne)) {
             if (k % 2 == 0) {
                 std::string delimiter = ":";
                 std::string name = ligne.substr(ligne.find(delimiter) + 1, ligne.length()); //lecture des stations
@@ -58,13 +58,13 @@ int main() {
             }
             if (k % 2 == 1) {
                 std::string delimiter = ":";
-                x = std::stoi(ligne.substr(0, ligne.find(delimiter) ));
-                y = std::stoi(ligne.substr(ligne.find(delimiter)+1, ligne.length()));
+                x = std::stoi(ligne.substr(0, ligne.find(delimiter)));
+                y = std::stoi(ligne.substr(ligne.find(delimiter) + 1, ligne.length()));
             }
             k++;
 
 
-            
+
             //if (150 * i + 60 < (sw)) {
             //    station.Coordinates = { float(150 * i + 60),float(200) };
             // //placement des coordonées pour qu'elles rentres sur l'écran
@@ -81,7 +81,7 @@ int main() {
             //i++;
         }
     }
-    else{
+    else {
         std::cerr << "Cannot open file: " << std::strerror(errno) << std::endl;
         return EXIT_FAILURE;
         //erreur si le fichier n'est pas lu
@@ -89,38 +89,60 @@ int main() {
     //Une nouvelle ère
     //un nouvel air
 
-    for(int i=0;i<CIRCULATING_RAME;i++){
-        
-        int sens=0;
-        if(i%2==0) sens=100;
-        Rame rame(sens==0,i,ligneA);
+    for (int i = 0;i < CIRCULATING_RAME;i++) {
+
+        int sens = 0;
+        if (i % 2 == 0) sens = 100;
+        Rame rame(sens == 0, i, ligneA);
 
         Image image = LoadImage("./rame_big.png"); // Load image in CPU memory (RAM)
         ImageResize(&image, 32, 32);
-        rame.image = image;   
+        rame.image = image;
         rame.degrees = 0;
 
-        rame.Coordinates={ligneA[i%18].Coordinates.x,ligneA[i%18].Coordinates.y};
+        rame.Coordinates = { ligneA[i % 18].Coordinates.x,ligneA[i % 18].Coordinates.y };
         if (rame.whichVoie == 0) {
             rame.nextStation = ligneA[i + 1 % 18];
         }
-        else {rame.nextStation = ligneA[i - 1 % 18]; }
+        else { rame.nextStation = ligneA[i - 1 % 18]; }
+        
+            if (rame.number % 2 == 0) {
+                rame.nextRameId = (rame.number + 2) % CIRCULATING_RAME;
+            }
+            else {
+                rame.nextRameId = (rame.number -2) % CIRCULATING_RAME;
+            }
+            if (CIRCULATING_RAME % 2 == 1) {
+                if (rame.number == CIRCULATING_RAME - 1) {
+                    rame.nextRameId = CIRCULATING_RAME - 2;
+                }
+            }
+            else {
+                    if (rame.number == CIRCULATING_RAME - 2) {
+                        rame.nextRameId = CIRCULATING_RAME - 1;
+                    }
+                }
+            if (rame.number == 1) { rame.nextRameId = 0; }
+
+            
+        
         rames.push_back(rame);
+
         //UnloadImage(image);
     }
 
     std::vector<std::thread> threads;
     for (auto& rame : rames) {
-        threads.emplace_back(&Rame::move_rame, std::ref(rame), std::ref(ligneA));
+        threads.emplace_back(&Rame::move_rame, std::ref(rame), std::ref(ligneA), std::ref(rames));
     }
 
     //for (auto& thread : threads) {
       //thread.join();
     //}
 
-    bool menu=false;
-    int counter=0;
-    Rame* target_rame;
+    bool menu = false;
+    int counter = 0;
+    Rame* target_rame = &rames[0];
     while(!WindowShouldClose()){
         if (counter%1000==0){
             for(int i=0; i<ligneA.size();i++){
@@ -144,10 +166,11 @@ int main() {
             if(IsKeyPressed(KEY_ZERO)){
                 menu=false;
                 std::cout<<"===================="<<std::endl;
-                std::cout<<"Rame numéro "<<target_rame->number<<std::endl;
+                std::cout<<"Rame numero "<<target_rame->number<<std::endl;
                 std::cout<<"Vitesse: "<<target_rame->vitesse<<std::endl;
                 std::cout<<"Passagers: "<<target_rame->passagers<<std::endl;
                 std::cout<<"Prochaine station: "<<target_rame->nextStation.name<<std::endl;
+                std::cout << "Rame suivante: " << target_rame->nextRameId << std::endl;
                 std::cout<<"Frein d'urgence: "<<target_rame->EmergencyBrake<<std::endl;
                 std::cout<<"===================="<<std::endl;
 

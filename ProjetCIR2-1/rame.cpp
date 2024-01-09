@@ -21,7 +21,7 @@ float CalculateAngle(Vector point1, Vector point2){
     return atan2f(dy, dx) * RAD2DEG;
 }
 
-void Rame::move_rame(std::vector<Station>& ligneA) {
+void Rame::move_rame(std::vector<Station>& ligneA, std::vector<Rame>& rames) {
     while(!WindowShouldClose()) {
         int x = this->nextStation.Coordinates.x - this->Coordinates.x;
         int y = this->nextStation.Coordinates.y - this->Coordinates.y;
@@ -32,9 +32,7 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
             arretRame(ligneA);
         }
 
-        if (this->EmergencyBrake && this->vitesse > 0) {
-            this->vitesse -= 2;
-        }
+        
         else {
             float getDistance = 6 * sqrt((this->Coordinates.x - this->nextStation.Coordinates.x) *
                                          (this->Coordinates.x - this->nextStation.Coordinates.x) +
@@ -50,19 +48,42 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
             }
 
             float distance_with_next_rame = 0;
-            if (this->nextRameId < size(ligneA)) {
-                distance_with_next_rame = sqrt((this->Coordinates.x - ligneA[this->nextRameId].Coordinates.x) *
-                                               (this->Coordinates.x - ligneA[this->nextRameId].Coordinates.x) +
-                                               (this->Coordinates.y - ligneA[this->nextRameId].Coordinates.y) *
-                                               (this->Coordinates.y - ligneA[this->nextRameId].Coordinates.y));
-            }
+            
+            
+            //Rame *nextRame = new Rame(0, CIRCULATING_RAME + 1, ligneA);
+            //NextRame(*this, rames, ligneA);
 
-            int distance_darret=0;
-            if(this->vitesse>0) distance_darret=(this->vitesse)*(this->vitesse)/(0.5*SIMULATION_RATE);
+            /*Rame* nextRame = new Rame(0, CIRCULATING_RAME + 1, ligneA);
+            for (int i = 0; i < CIRCULATING_RAME; i++) {
+                if (rames[i].number = this->nextRameId) {
+                    nextRame->Coordinates.x = rames[i].Coordinates.x;
+                    nextRame->Coordinates.y = rames[i].Coordinates.x;
+                }
+            }*/
+            
+                distance_with_next_rame = 6*sqrt((this->Coordinates.x - rames[this->nextRameId].Coordinates.x) *
+                                               (this->Coordinates.x - rames[this->nextRameId].Coordinates.x) +
+                                               (this->Coordinates.y - rames[this->nextRameId].Coordinates.y) *
+                                               (this->Coordinates.y - rames[this->nextRameId].Coordinates.y));
+            
+
+            
+                 
+
+                if (this->EmergencyBrake && this->vitesse > 0) {
+                    distance_with_next_rame=0;
+                    this->vitesse -= 0.05 * SIMULATION_RATE;
+                }
+
 
             if ((this->vitesse < MAX_VITESSE) &&
                 (((((this->vitesse)) * (((this->vitesse) + 1))) / 14.4) < getDistance)) {
-                this->vitesse += 0.5 * SIMULATION_RATE;
+                if (((this->vitesse) * (this->vitesse + 1) / 14.4 > distance_with_next_rame-250)&&(this->vitesse > 0)&&(this->whichVoie==rames[this->nextRameId].whichVoie)) {
+                    this->vitesse -= 0.05 * SIMULATION_RATE;
+                }
+                else {
+                    this->vitesse += 0.05 * SIMULATION_RATE;
+                }
             } else {
                 if (getDistance < 1) {
                     this->Coordinates.x -= (this->Coordinates.x - this->nextStation.Coordinates.x);
@@ -72,16 +93,19 @@ void Rame::move_rame(std::vector<Station>& ligneA) {
                 if (this->vitesse > 0) {
                     this->vitesse -= 0.05 * SIMULATION_RATE;
                 } else {
-                    trade_passagers();
-                    if(nextStation.number==0 && whichVoie==TO_4CANTONS|| nextStation.number==ligneA.size()-1 && whichVoie==TO_CHU){
-                        nextStation.passagers+=passagers;
-                        passagers=0;
+                    if (this->Coordinates == this->nextStation.Coordinates) {
+                        trade_passagers();
+
+                        if (nextStation.number == 0 && whichVoie == TO_4CANTONS || nextStation.number == ligneA.size() - 1 && whichVoie == TO_CHU) {
+                            nextStation.passagers += passagers;
+                            passagers = 0;
+                        }
+                        if (nextStation.number == 0 && whichVoie == TO_CHU || nextStation.number == ligneA.size() - 1 && whichVoie == TO_4CANTONS) {
+                            passagers += nextStation.passagers;
+                            nextStation.passagers = 0;
+                        }
+                        arretRame(ligneA);
                     }
-                    if(nextStation.number==0 && whichVoie==TO_CHU|| nextStation.number==ligneA.size()-1 && whichVoie==TO_4CANTONS){
-                        passagers+=nextStation.passagers;
-                        nextStation.passagers=0;
-                    }
-                    arretRame(ligneA);
                 }
             }
         }
@@ -120,7 +144,16 @@ void Rame::arretRame(std::vector<Station> ligneA) {
     }
 }
 
+    Rame *Rame::NextRame(Rame rame, std::vector<Rame> rames, std::vector<Station> ligneA) {
+        Rame* nextRame = new Rame(0, CIRCULATING_RAME + 1 + this->number, ligneA);
+        for(int i = 0; i < CIRCULATING_RAME; i++)
+            if (rames[i].number = rame.nextRameId) {
+                nextRame->Coordinates.x = rames[i].Coordinates.x;
+                nextRame->Coordinates.y = rames[i].Coordinates.y;
+                return (nextRame);
+            }
 
+}
 
 
 void Rame::trade_passagers() {
